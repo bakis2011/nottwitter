@@ -42,6 +42,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# Zeus for faster dev server
+gem 'zeus'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -1271,3 +1271,7 @@ $default-float: left;
 // $topbar-sticky-class: ".sticky";
 
 @import 'foundation';
+
+.row {
+  max-width: 96%;
+}
