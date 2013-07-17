@@ -1,7 +1,5 @@
 = form_for @nottweet do |f|
   .row
-      = f.label :content
-  .row
-      = f.text_area :content
+    = f.text_area :content, placeholder: "Compose a new NotTweet..."
   .row
     = f.submit "Not Tweet"

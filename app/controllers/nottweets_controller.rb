@@ -1,7 +1,7 @@
 class NottweetsController < ApplicationController
   before_filter :authorize
   def index
-    @nottweets = Nottweet.order('created_at DESC')
+    @nottweets = timeline_nottweets.order('created_at DESC')
     @nottweet = Nottweet.new
   end
 
@@ -23,5 +23,10 @@ class NottweetsController < ApplicationController
 
   def nottweet_params
     params.require(:nottweet).permit(:content)
+  end
+
+  def timeline_nottweets
+    user_ids = current_user.followed.map(&:id)
+    Nottweet.where(user_id: user_ids)
   end
 end

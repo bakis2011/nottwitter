@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authorize, only: [:following, :followers]
+
   def index
     @users = User.all
   end
