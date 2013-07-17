@@ -24,6 +24,14 @@ class UsersController < ApplicationController
     @nottweets = Nottweet.where(user_id: @user.id)
   end
 
+  def following
+    @following = Relationship.where(follower_id: params[:id]).map(&:followed)
+  end
+
+  def followers
+    @followers = Relationship.where(followed_id: params[:id]).map(&:follower)
+  end
+
   def update
   end
 

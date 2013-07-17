@@ -1,7 +1,8 @@
 class NottweetsController < ApplicationController
   before_filter :authorize
   def index
-    @nottweets = Nottweet.all
+    @nottweets = Nottweet.order('created_at DESC')
+    @nottweet = Nottweet.new
   end
 
   def new

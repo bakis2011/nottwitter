@@ -1,11 +1,17 @@
 .row
   h1= @user.username
   ul
-    h4 Not Tweets
-    - @nottweets.each do |nottweet|
-      li= nottweet.content
-  h3 = "Followers: #{@followers.count}"
-  h3 = "Following: #{@following.count}"
+    h4 NotTweets
+    - if @nottweets.length > 0
+      = render 'nottweets/nottweets'
+    - else
+      | This user has no NotTweets
+  h3
+    = link_to "Followers: ", followers_path(@user.id)
+    = @followers.count
+  h3
+    = link_to "Following: ", following_path(@user.id)
+    = @following.count
   - if @user != current_user
     - if current_user.following?(@user)
       = link_to "Unfollow", unfollow_path(@user.id), remote: true

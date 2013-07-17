@@ -1,13 +1,24 @@
 .row
-  h1 Timeline
-.row
-  table
-    thead
-      tr
-        th Username
-        th NotTweet
-    tbody
-        - @nottweets.each do |nottweet|
-          tr
-            td= link_to nottweet.user.username, user_path(nottweet.user.id)
-            td= nottweet.content
+  .small-3.large-2.columns
+    = render 'nottweets/form'
+  .small-9.large10.columns
+    h1 Timeline
+  .row
+    table
+      thead
+        tr
+          th Username
+          th NotTweet
+          th When
+      tbody
+          - @nottweets.each do |nottweet|
+            tr
+              td= link_to nottweet.user.username, user_path(nottweet.user.id)
+              td= nottweet.content
+              - minutes_ago = ((Time.now - nottweet.created_at)/60).round
+              - if minutes_ago > 60
+                td= "#{minutes_ago/60}h"
+              - elsif minutes_ago > 1440
+                td= nottweet.created_at.strftime("%m &d")
+              - else
+                td= "#{minutes_ago}m"

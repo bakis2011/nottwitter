@@ -11,6 +11,9 @@ Nottwitter::Application.routes.draw do
   get 'users/:id/unfollow' => 'relationships#destroy', as: 'unfollow'
   get 'users/:id/follow' => 'relationships#create', as: 'follow'
 
+  get 'users/:id/following' => 'users#following', as: 'following'
+  get 'users/:id/followers' => 'users#followers', as: 'followers'
+
   resources :users
   resources :sessions
   resources :nottweets
