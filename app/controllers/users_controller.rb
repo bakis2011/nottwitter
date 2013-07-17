@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
   def new
     @user = User.new
   end
@@ -18,6 +19,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @following = Relationship.where(follower_id: @user.id)
+    @followers = Relationship.where(followed_id: @user.id)
+    @nottweets = Nottweet.where(user_id: @user.id)
   end
 
   def update

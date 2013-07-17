@@ -9,5 +9,5 @@
     tbody
         - @nottweets.each do |nottweet|
           tr
-            td= nottweet.user.username
+            td= link_to nottweet.user.username, user_path(nottweet.user.id)
             td= nottweet.content
