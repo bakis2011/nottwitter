@@ -1,11 +1,13 @@
 Nottwitter::Application.routes.draw do
 
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  root 'users#new'
+  get 'sessions/new', as: 'login'
+  get 'sessions/create'
+  get 'sessions/destroy', as: 'logout'
+  get 'signup' => 'users#new', as: 'signup'
+  root 'sessions#new'
 
   resources :users
+  resources :sessions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
