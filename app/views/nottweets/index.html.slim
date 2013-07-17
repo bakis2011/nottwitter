@@ -1,0 +1,11 @@
+.row
+  table
+    thead
+      tr
+        th Username
+        th NotTweet
+    tbody
+        - @nottweets.each do |nottweet|
+          tr
+            td= nottweet.user.username
+            td= nottweet.content

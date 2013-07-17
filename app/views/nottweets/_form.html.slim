@@ -1,0 +1,8 @@
+= form_for @nottweet do |f|
+  .row
+    .large-2.small-3.columns
+      = f.label :content
+    .large-3.small-4.columns.end
+      = f.text_area :content
+  .row
+    = f.submit "Not Tweet"
