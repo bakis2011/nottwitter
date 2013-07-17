@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url, notice: "You can't believe it isn't Twitter either!"
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "Thanks for signing up, #{@user.username}"
     else
-      flash[:alert] = "Email or password is invalid"
       render "new"
     end
   end
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
   end
 
   private
