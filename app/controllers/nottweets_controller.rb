@@ -1,4 +1,5 @@
 class NottweetsController < ApplicationController
+  before_filter :authorize
   def index
     @nottweets = Nottweet.all
   end

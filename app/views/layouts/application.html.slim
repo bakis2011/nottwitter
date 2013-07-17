@@ -25,6 +25,6 @@ html lang="en"
     - if flash[:notice]
       .alert-box.radius data-alert=""
         = flash[:notice]
-        a.close href="#"
+        a.close href="#" &times;
     = yield
     = javascript_include_tag "application"

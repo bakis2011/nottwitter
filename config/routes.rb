@@ -4,7 +4,7 @@ Nottwitter::Application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy', as: 'logout'
   get 'signup' => 'users#new', as: 'signup'
-  root 'sessions#new'
+  root 'nottweets#index'
 
   resources :users
   resources :sessions
