@@ -45,11 +45,19 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if params[:password][:changed] == "1"
-      @user.update_attributes(user_params) if @user.authenticate(params[:user][:old_password])
+      if @user.authenticate(params[:user][:old_password]) and @user.update_attributes(user_params)
+        redirect_to user_path(@user.id), notice: "Password Updated"
+      else
+        flash[:alert] = "Invalid Password"
+        render "edit"
+      end
     else
-      @user.update_attributes(username: params[:user][:username], email: params[:user][:email])
+      if @user.update_attributes(username: params[:user][:username], email: params[:user][:email])
+        redirect_to user_path(@user.id), notice: "Profile Updated"
+      else
+        render "edit"
+      end
     end
-    redirect_to user_path(@user.id), notice: "Successfully updated"
   end
 
   def destroy
