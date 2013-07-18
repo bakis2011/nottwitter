@@ -1,5 +1,4 @@
 class NottweetsController < ApplicationController
-  before_filter :authorize
   def index
     @nottweets = timeline_nottweets.order('created_at DESC')
     @nottweet = Nottweet.new

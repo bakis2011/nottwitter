@@ -1,0 +1,8 @@
+tr
+  td= link_to user.username, user_path(user.id)
+  td= user.created_at.strftime("%b %d")
+  - if current_user and user != current_user
+    - if current_user.following?(user)
+      td= link_to "Unfollow", unfollow_path(user.id), remote: true
+    - else
+      td= link_to "Follow", follow_path(user.id), remote: true

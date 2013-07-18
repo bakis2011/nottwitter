@@ -1,8 +1,8 @@
-doctype
+doctype html
 html lang="en"
   head
     meta charset="utf-8"
-    title= content_for?(:title) ? yield(:title) : "Untitled"
+    title= content_for?(:title) ? yield(:title) : "Not Twitter"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags

@@ -1,0 +1,43 @@
+.row
+  h2 Edit Profile
+= form_for @user do |f|
+  - if @user.errors.any?
+    .row
+      .alert-box.alert.radius data-alert=""
+        = @user.errors.full_messages.join(', ')
+        a.close href="#" &times;
+  .row
+    .large-2.small-3.columns
+      = f.label :username, class: "right inline"
+    .large-3.small-4.columns.end
+      = f.text_field :username
+  .row
+    .large-2.small-3.columns
+      = f.label :email, class: "right inline"
+    .large-3.small-4.columns.end
+      = f.text_field :email
+  .row
+    .large-offset-2.small-offset-3.large-3.small-4.columns
+      .large-7.columns
+        p Change password?
+      .large-5.columns
+        = check_box("password", "changed")
+  .password.hide
+    .row
+      .large-2.small-3.columns
+        = f.label :old_password, class: "right inline"
+      .large-3.small-4.columns.end
+        = f.password_field :old_password
+    .row
+      .large-2.small-3.columns
+        = f.label :password, class: "right inline"
+      .large-3.small-4.columns.end
+        = f.password_field :password
+    .row
+      .large-2.small-3.columns
+        = f.label :password_confirmation, class: "right inline"
+      .large-3.small-4.columns.end
+        = f.password_field :password_confirmation
+  .row
+    .large-offset-1.small-offset-1
+      = f.submit "I Still Can't Believe It's Not Twitter!", class: "button radius"

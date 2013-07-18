@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorize, only: [:following, :followers]
+  skip_before_action :authorize, only: [:index, :new, :create, :show]
 
   def index
     @users = User.all
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      Relationship.create(followed_id: @user.id, follower_id: @user.id)
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Thanks for signing up, #{@user.username}"
     else
@@ -34,7 +35,21 @@ class UsersController < ApplicationController
     @followers = Relationship.where(followed_id: params[:id]).map(&:follower)
   end
 
+  def edit
+    @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to root_url, notice: "I don't think so..."
+    end
+  end
+
   def update
+    @user = User.find(params[:id])
+    if params[:password][:changed] == "1"
+      @user.update_attributes(user_params) if @user.authenticate(params[:user][:old_password])
+    else
+      @user.update_attributes(username: params[:user][:username], email: params[:user][:email])
+    end
+    redirect_to user_path(@user.id), notice: "Successfully updated"
   end
 
   def destroy

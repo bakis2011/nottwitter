@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :followed, through: :relationships
 
   def following?(user)
-    not relationships.find_by(followed_id: user.id).nil?
+    relationships.find_by(followed_id: user.id).present?
   end
 
   def follow(user)
