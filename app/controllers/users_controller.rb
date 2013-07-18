@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       if @user.authenticate(params[:user][:old_password]) and @user.update_attributes(user_params)
         redirect_to user_path(@user.id), notice: "Password Updated"
       else
-        flash[:alert] = "Invalid Password"
+        flash[:alert] = "Invalid Password" unless @user.errors
         render "edit"
       end
     else
