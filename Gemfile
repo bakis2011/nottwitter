@@ -24,6 +24,8 @@ gem 'zurb-foundation'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# Time ago for tweet dates
+gem 'rails-timeago', '~> 2.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

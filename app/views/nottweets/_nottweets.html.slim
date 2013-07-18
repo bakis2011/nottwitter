@@ -10,14 +10,4 @@
           tr
             td= link_to nottweet.user.username, user_path(nottweet.user.id)
             td= nottweet.content
-            - seconds_ago = (Time.now - nottweet.created_at).round
-            - if seconds_ago > 1.day
-              td= nottweet.created_at.strftime("%b %d")
-            - elsif seconds_ago > 1.hour
-              td= "#{seconds_ago/1.hour}h"
-            - elsif seconds_ago > 1.minute
-              td= "#{seconds_ago/1.minute}m"
-            - elsif seconds_ago > 1.second
-              td= "#{seconds_ago}s"
-            - else
-              td Just Now
+            td= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
