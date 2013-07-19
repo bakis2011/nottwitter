@@ -35,6 +35,10 @@ class UsersController < ApplicationController
     @followers = Relationship.where(followed_id: params[:id]).map(&:follower)
   end
 
+  def favorites
+    @favorites = Favorite.where(user_id: params[:id]).map(&:nottweet)
+  end
+
   def edit
     @user = User.find(params[:id])
     if @user != current_user
@@ -48,7 +52,7 @@ class UsersController < ApplicationController
       if @user.authenticate(params[:user][:old_password]) and @user.update_attributes(user_params)
         redirect_to user_path(@user.id), notice: "Password Updated"
       else
-        flash[:alert] = "Invalid Password" unless @user.errors
+        flash[:alert] = "Invalid Password" if @user.errors.count.zero?
         render "edit"
       end
     else

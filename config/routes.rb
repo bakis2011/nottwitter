@@ -1,5 +1,7 @@
 Nottwitter::Application.routes.draw do
 
+  resources :notifications
+
   root 'nottweets#index'
 
   get 'sessions/new', as: 'login'
@@ -8,11 +10,15 @@ Nottwitter::Application.routes.draw do
 
   get 'signup' => 'users#new', as: 'signup'
 
-  get 'users/:id/unfollow' => 'relationships#destroy', as: 'unfollow'
   get 'users/:id/follow' => 'relationships#create', as: 'follow'
+  get 'users/:id/unfollow' => 'relationships#destroy', as: 'unfollow'
 
   get 'users/:id/following' => 'users#following', as: 'following'
   get 'users/:id/followers' => 'users#followers', as: 'followers'
+  get 'users/:id/favorited' => 'users#favorited', as: 'favorited'
+
+  get 'nottweets/:id/favorite' => 'favorites#create', as: 'favorite'
+  get 'nottweets/:id/unfavorite' => 'favorites#destroy', as: 'unfavorite'
 
   resources :users
   resources :sessions

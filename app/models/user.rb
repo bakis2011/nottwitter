@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
 
   has_many :nottweets, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
@@ -22,6 +23,19 @@ class User < ActiveRecord::Base
 
   def unfollow(user)
     relationships.find_by(followed_id: user.id).destroy unless id == user.id
+  end
+
+
+  def favorited?(nottweet)
+    favorites.find_by(nottweet_id: nottweet.id).present?
+  end
+
+  def favorite(nottweet)
+    favorites.create(nottweet_id: nottweet.id) unless favorited?(nottweet)
+  end
+
+  def unfavorite(nottweet)
+    favorites.find_by(nottweet_id: nottweet.id).destroy
   end
 
 end
