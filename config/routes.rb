@@ -15,7 +15,7 @@ Nottwitter::Application.routes.draw do
 
   get 'users/:id/following' => 'users#following', as: 'following'
   get 'users/:id/followers' => 'users#followers', as: 'followers'
-  get 'users/:id/favorited' => 'users#favorited', as: 'favorited'
+  get 'users/:id/favorites' => 'users#favorites', as: 'favorites'
 
   get 'nottweets/:id/favorite' => 'favorites#create', as: 'favorite'
   get 'nottweets/:id/unfavorite' => 'favorites#destroy', as: 'unfavorite'

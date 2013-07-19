@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    @favorites = Favorite.where(user_id: params[:id]).map(&:nottweet)
+    @nottweets = Favorite.where(user_id: params[:id]).map(&:nottweet).reject(&:blank?)
   end
 
   def edit
