@@ -4,7 +4,7 @@
   ul
     h4 NotTweets
     - if @nottweets.length > 0
-      = render 'nottweets/nottweets'
+      = render 'nottweets/nottweets', nottweets: @nottweets
     - else
       | This user has no NotTweets
   h3

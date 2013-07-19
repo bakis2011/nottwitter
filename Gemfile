@@ -1,49 +1,53 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# bundle edge rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc1'
 
-# Use postgresql as the database for Active Record
+# use postgresql as the database for active record
 gem 'pg'
 
-# Slim
+# slim
 gem 'slim-rails'
 
-# Use SCSS for stylesheets
+# use scss for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
-# Use Uglifier as compressor for JavaScript assets
+# use uglifier as compressor for javascript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
+# use coffeescript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# Zurb stuff for responsive framework
+# zurb stuff for responsive framework
 gem 'compass-rails'
 gem 'zurb-foundation'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# see https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-# Time ago for tweet dates
+# time ago for tweet dates
 gem 'rails-timeago', '~> 2.0'
 
-# Link Helpers
+# link helpers
 gem 'rails_autolink'
 gem 'sanitize'
 
-# Use jquery as the JavaScript library
+# searching
+gem 'sunspot_rails', '~> 2.0.0'
+gem 'sunspot_solr'
+
+# use jquery as the javascript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# turbolinks makes following links in your web application faster. read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 
 gem 'rails_12factor', group: :production
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# build json apis with ease. read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
+  # bundle exec rake doc:rails generates the api under doc/api.
   gem 'sdoc', require: false
 end
 
@@ -52,17 +56,17 @@ group :development do
   gem 'pry-plus'
 end
 
-# Use ActiveModel has_secure_password
+# use activemodel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Zeus for faster dev server
+# zeus for faster dev server
 gem 'zeus'
 
-# Use unicorn as the app server
+# use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
+# use capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
+# use debugger
 # gem 'debugger', group: [:development, :test]

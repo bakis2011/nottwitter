@@ -27,6 +27,14 @@ class NottweetsController < ApplicationController
     end
   end
 
+  def hashtag
+    @hashtag = params[:hashtag]
+    @search = Nottweet.search do
+      keywords params[:hashtag]
+    end
+    @results = @search.results
+  end
+
   private
 
   def nottweet_params
@@ -51,7 +59,7 @@ class NottweetsController < ApplicationController
     @hashtags = @nottweet.content.scan(HASHTAG_REGEX).flatten!
     unless @hashtags.nil?
       @hashtags.each do |hashtag|
-        @nottweet.content.sub!("#"+hashtag, "<a href=\"#\">#"+hashtag+"</a>")
+        @nottweet.content.sub!("#"+hashtag, "<a href=\"/nottweets/search/"+hashtag+"\">#"+hashtag+"</a>")
       end
     end
   end

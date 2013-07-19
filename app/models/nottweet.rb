@@ -4,4 +4,7 @@ class Nottweet < ActiveRecord::Base
   belongs_to :user
   has_many :favorites, dependent: :destroy
 
+  searchable do
+    text :content
+  end
 end

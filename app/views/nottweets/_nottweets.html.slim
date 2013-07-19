@@ -7,12 +7,12 @@
         th.favorite Favorite
         th.when When
     tbody
-        - @nottweets.each do |nottweet|
-          tr
-            td= link_to nottweet.user.username, user_path(nottweet.user.id)
-            td= auto_link nottweet.content
-            - if current_user.favorited?(nottweet)
-              td= link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
-            - else
-              td= link_to "Favorite", favorite_path(nottweet.id), remote: true
-            td= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
+      - nottweets.each do |nottweet|
+        tr
+          td= link_to nottweet.user.username, user_path(nottweet.user.id)
+          td= auto_link nottweet.content
+          - if current_user.favorited?(nottweet)
+            td= link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
+          - else
+            td= link_to "Favorite", favorite_path(nottweet.id), remote: true
+          td= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
