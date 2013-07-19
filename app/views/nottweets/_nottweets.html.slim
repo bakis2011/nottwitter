@@ -10,7 +10,7 @@
         - @nottweets.each do |nottweet|
           tr
             td= link_to nottweet.user.username, user_path(nottweet.user.id)
-            td= nottweet.content
+            td= auto_link nottweet.content
             - if current_user.favorited?(nottweet)
               td= link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
             - else

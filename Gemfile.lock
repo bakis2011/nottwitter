@@ -77,6 +77,7 @@ GEM
     mime-types (1.23)
     minitest (4.7.5)
     multi_json (1.7.7)
+    nokogiri (1.5.9)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -125,6 +126,8 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_autolink (1.1.0)
+      rails (> 3.1)
     rails_serve_static_assets (0.0.1)
     rails_stdout_logging (0.0.1)
     railties (4.0.0.rc1)
@@ -135,6 +138,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
     sass (3.2.9)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -194,6 +199,8 @@ DEPENDENCIES
   rails (= 4.0.0.rc1)
   rails-timeago (~> 2.0)
   rails_12factor
+  rails_autolink
+  sanitize
   sass-rails (~> 4.0.0.rc1)
   sdoc
   slim-rails

@@ -27,6 +27,10 @@ gem 'zurb-foundation'
 # Time ago for tweet dates
 gem 'rails-timeago', '~> 2.0'
 
+# Link Helpers
+gem 'rails_autolink'
+gem 'sanitize'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
