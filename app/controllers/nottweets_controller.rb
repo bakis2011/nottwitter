@@ -51,7 +51,8 @@ class NottweetsController < ApplicationController
     unless @mentions.nil?
       @mentions.each do |mention|
         user = User.find_by(username: mention)
-        @nottweet.content.sub!("@"+user.username, "<a href=\"/users/"+user.id.to_s+"\">@"+user.username+"</a>") if user
+        @nottweet.content.sub!("@"+user.username, "<a href=\"/users/#{user.id.to_s}\">@#{user.username}</a>") if user
+        Notification.create(user_id: user.id, content: "<a href=\"/users/#{current_user.id.to_s}\">#{current_user.username}</a> mentioned you in his tweet \"#{@nottweet.content}\"")
       end
     end
   end
@@ -59,7 +60,7 @@ class NottweetsController < ApplicationController
     @hashtags = @nottweet.content.scan(HASHTAG_REGEX).flatten!
     unless @hashtags.nil?
       @hashtags.each do |hashtag|
-        @nottweet.content.sub!("#"+hashtag, "<a href=\"/nottweets/search/"+hashtag+"\">#"+hashtag+"</a>")
+        @nottweet.content.sub!("##{hashtag}", "<a href=\"/nottweets/search/#{hashtag}\">##{hashtag}</a>")
       end
     end
   end
