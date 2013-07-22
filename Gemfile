@@ -31,6 +31,11 @@ gem 'rails-timeago', '~> 2.0'
 gem 'rails_autolink'
 gem 'sanitize'
 
+# avatar uploads
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+
 # searching
 gem 'sunspot_rails', '~> 2.0.0'
 gem 'sunspot_solr'

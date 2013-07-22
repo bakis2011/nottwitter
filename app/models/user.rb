@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   has_many :notifications
 
+  mount_uploader :avatar, AvatarUploader
+
   def following?(user)
     relationships.find_by(followed_id: user.id).present?
   end

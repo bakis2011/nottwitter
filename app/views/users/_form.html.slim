@@ -25,5 +25,11 @@
     .large-3.small-4.columns.end
       = f.password_field :password_confirmation
   .row
+    .large-2.small-3.columns
+      = f.label :avatar, class: "right inline"
+    .large-3.small-4.columns.end
+      = f.file_field :avatar
+
+  .row
     .large-offset-1.small-offset-1
       = f.submit "I Can't Believe It's Not Twitter!", class: "button radius"

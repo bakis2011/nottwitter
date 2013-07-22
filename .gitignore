@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+/config/aws.yml
+/public/uploads/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

@@ -22,6 +22,11 @@ Nottwitter::Application.configure do
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
 
+  # aws = YAML.load_file('config/aws.yml')["development"]
+  # ENV['S3_KEY'] = aws[:AWS_ACCESS_KEY_ID]
+  # ENV['S3_SECRET'] = aws[:AWS_SECRET_ACCESS_KEY]
+  # ENV['S3_BUCKET'] = aws[:BUCKET]
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
