@@ -1,20 +1,13 @@
 .row
   table
-    thead
-      tr
-        th Avatar
-        th.username Username
-        th NotTweet
-        th.favorite Favorite
-        th.when When
     tbody
       - nottweets.each do |nottweet|
         tr
-          td= image_tag nottweet.user.avatar.url(:thumb)
+          td.avatar= image_tag nottweet.user.avatar.url(:thumb)
           td= link_to nottweet.user.username, user_path(nottweet.user.id)
           td= auto_link nottweet.content
           - if current_user.favorited?(nottweet)
             td= link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
           - else
             td= link_to "Favorite", favorite_path(nottweet.id), remote: true
-          td= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
+          td.when= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
