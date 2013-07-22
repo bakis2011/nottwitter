@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authorize, only: [:index, :new, :create, :show]
 
   def index
-    @users = User.all
+    @users = User.order('created_at DESC')
   end
 
   def new
@@ -24,19 +24,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @following = Relationship.where(follower_id: @user.id)
     @followers = Relationship.where(followed_id: @user.id)
-    @nottweets = Nottweet.where(user_id: @user.id)
+    @nottweets = Nottweet.where(user_id: @user.id).order('created_at DESC')
   end
 
   def following
-    @following = Relationship.where(follower_id: params[:id]).map(&:followed)
+    @following = Relationship.where(follower_id: params[:id]).map(&:followed).order('created_at DESC')
   end
 
   def followers
-    @followers = Relationship.where(followed_id: params[:id]).map(&:follower)
+    @followers = Relationship.where(followed_id: params[:id]).map(&:follower).order('created_at DESC')
   end
 
   def favorites
-    @nottweets = Favorite.where(user_id: params[:id]).map(&:nottweet).reject(&:blank?)
+    @nottweets = Favorite.where(user_id: params[:id]).map(&:nottweet).reject(&:blank?).order('created_at DESC')
   end
 
   def edit
