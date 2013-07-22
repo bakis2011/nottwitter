@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships
   has_many :followed, through: :relationships
 
+  has_many :notifications
+
   def following?(user)
     relationships.find_by(followed_id: user.id).present?
   end

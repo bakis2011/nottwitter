@@ -1,0 +1,11 @@
+.row.notifications
+  table
+    thead
+      tr
+        th Notification
+        th.when When
+    tbody
+      - @notifications.each do |notification|
+        tr class="#{'unread' unless notification.read}"
+          td= notification.content
+          td= timeago_tag notification.created_at, nojs: true, limit: 10.days.ago
