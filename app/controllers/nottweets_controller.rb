@@ -28,11 +28,16 @@ class NottweetsController < ApplicationController
   end
 
   def hashtag
-    @hashtag = params[:hashtag]
-    @search = Nottweet.search do
-      keywords params[:hashtag]
+    if Rails.env.development?
+      @hashtag = params[:hashtag]
+      @search = Nottweet.search do
+        keywords params[:hashtag]
+      end
+      @results = @search.results
+    else
+      @results = []
+      flash[:alert] = "Unforntunately, searching only works in development"
     end
-    @results = @search.results
   end
 
   private
