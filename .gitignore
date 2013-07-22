@@ -8,6 +8,8 @@
 /.bundle
 /config/aws.yml
 /public/uploads/*
+/solr/data/development/*
+/config/initializers/aws_creds.rb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
