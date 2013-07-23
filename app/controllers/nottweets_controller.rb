@@ -21,7 +21,7 @@ class NottweetsController < ApplicationController
     find_hashtags
 
     if @nottweet.save
-      redirect_to root_url, notice: "Thanks for not tweeting"
+      redirect_to root_url, notice: "Thanks for Borking!"
     else
       render "new"
     end
@@ -38,6 +38,11 @@ class NottweetsController < ApplicationController
       @results = []
       flash[:alert] = "Unforntunately, searching only works in development"
     end
+  end
+
+  def destroy
+    Nottweet.find(params[:id]).destroy
+    redirect_to :back
   end
 
   private

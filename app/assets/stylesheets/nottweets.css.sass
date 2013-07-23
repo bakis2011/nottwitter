@@ -18,11 +18,14 @@ table
   .when, .favorite
     width: 150px
 
-  td.content
+  td
     position: relative
-    padding: 20px !important
 
-  .show_attachment, .hide_attachment
-    left: 0
-    bottom: 0
+    &.content
+      padding: 20px !important
+
+  .show_attachment, .delete_bork
     position: absolute
+    bottom: 0
+    left: 0
+
