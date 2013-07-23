@@ -24,15 +24,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @following = Relationship.where(follower_id: @user.id)
     @followers = Relationship.where(followed_id: @user.id)
-    @nottweets = Nottweet.where(user_id: @user.id).order('created_at DESC')
+    @nottweets = Nottweet.where(user_id: @user.id).order('created_at DESC').page(params[:page]).per(50)
   end
 
   def following
-    @following = Relationship.where(follower_id: params[:id]).map(&:followed).order('created_at DESC')
+    @following = Relationship.where(follower_id: params[:id]).order('created_at DESC').map(&:followed)
   end
 
   def followers
-    @followers = Relationship.where(followed_id: params[:id]).map(&:follower).order('created_at DESC')
+    @followers = Relationship.where(followed_id: params[:id]).order('created_at DESC').map(&:follower)
   end
 
   def favorites

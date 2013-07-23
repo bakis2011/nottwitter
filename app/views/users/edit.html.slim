@@ -1,7 +1,7 @@
 .row
   h2 Edit Profile
 .row
-  = link_to "Delete User", user_path(@user.id), method: :delete, class: "button alert", data: { confirm: "You sure you wanna quit the borking game?" }
+  = link_to "Delete User", user_path(@user.id), method: :delete, class: "button alert", data: { confirm: "You quit the borking game?" }
 = form_for @user do |f|
   - if @user.errors.any?
     .row

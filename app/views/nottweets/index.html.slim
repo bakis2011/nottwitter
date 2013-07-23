@@ -3,4 +3,7 @@
     = render 'nottweets/form'
   .small-9.large10.columns
     h1 Borkline
-    = render 'nottweets', nottweets: @nottweets
+    table
+      tbody
+        = paginate @nottweets
+        = render @nottweets

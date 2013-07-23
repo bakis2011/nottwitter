@@ -1,9 +1,5 @@
 .row.notifications
   table
-    thead
-      tr
-        th Notification
-        th.when When
     tbody
       - @notifications.each do |notification|
         tr class="#{'unread' unless notification.read}"

@@ -4,7 +4,7 @@ class NottweetsController < ApplicationController
   HASHTAG_REGEX = /\#([\w\-]+)/
 
   def index
-    @nottweets = timeline_nottweets.order('created_at DESC')
+    @nottweets = timeline_nottweets.order('created_at DESC').page(params[:page]).per(50)
     @nottweet = Nottweet.new
   end
 

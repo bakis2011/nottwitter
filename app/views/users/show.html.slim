@@ -3,14 +3,8 @@
     = link_to (image_tag @user.avatar.url(:profile), class: "profile_avatar"), @user.avatar.url
   .small-1.large-1.columns.end
     h1= @user.username
+    = link_to "Edit", edit_user_path(current_user.id) if current_user == @user
 .row
-  = link_to "Edit", edit_user_path(current_user.id) if current_user == @user
-  ul
-    h4 Borks
-    - if @nottweets.length > 0
-      = render 'nottweets/nottweets', nottweets: @nottweets
-    - else
-      | This user has no Borks
   h3
     = link_to "Followers: ", followers_path(@user.id)
     = @followers.count
@@ -22,3 +16,11 @@
       = link_to "Unfollow", unfollow_path(@user.id), remote: true
     - elsif current_user
       = link_to "Follow", follow_path(@user.id), remote: true
+  h4 Borks
+  - if @nottweets.length > 0
+    table
+      tbody
+        = paginate @nottweets
+        = render @nottweets
+  - else
+    | This user has no Borks

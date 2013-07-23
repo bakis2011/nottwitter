@@ -37,9 +37,13 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 
+# pagination
+gem 'kaminari'
+gem 'spaghetti'
 
 # use jquery as the javascript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # turbolinks makes following links in your web application faster. read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
