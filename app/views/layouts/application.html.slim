@@ -12,7 +12,8 @@ html lang="en"
         ul.title-area
           li.name
             h1
-              = link_to "Borker", root_url
+              = link_to (image_tag("/assets/borker.png", width: "28")), root_url, class: "logo"
+              = link_to "Borker", root_url, class: "title"
         section.top-bar-section
           ul.right
             li= link_to "Borkers", users_path

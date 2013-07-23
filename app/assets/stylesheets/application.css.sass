@@ -13,25 +13,16 @@
  *= require spaghetti
  *= require_tree .
  */
-header
-  width: 100%
-  height: 60px
-  position: fixed
-  top: 0
-  z-index: 1000
-  background-color: #222
-
-  .container
-    padding-top: 5px
-    height: auto
-    margin: auto
+@import bourbon/bourbon
 
 .logo
-  font-size: 26px
-  color: rgba(#d5d7d8, .8)
-  text-shadow: 0 -1px 0 rgba(#000, .9)
-  margin: 17px 20px 0 0
-  padding: 0
+  margin-bottom: 3px
+  display: inline-block !important
+  +transition(all .4s ease-in)
 
   &:hover
-    color: rgba(#d5d7d8, 1)
+    +transform(rotate(360deg))
+
+.title
+  display: inline-block !important
+  position: absolute
