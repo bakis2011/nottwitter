@@ -15,7 +15,7 @@ html lang="en"
               = link_to "Borker", root_url
         section.top-bar-section
           ul.right
-            li= link_to "Users", users_path
+            li= link_to "Borkers", users_path
             - if current_user
               li= link_to "Notifications (#{current_user.notifications.where(read: false).count})", notifications_path
               li= link_to current_user.username.capitalize, user_path(current_user.id)
