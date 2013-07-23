@@ -1,13 +1,16 @@
-.row
-  table
-    tbody
-      - nottweets.each do |nottweet|
-        tr
-          td.avatar= image_tag nottweet.user.avatar.url(:thumb)
-          td= link_to nottweet.user.username, user_path(nottweet.user.id)
-          td= auto_link nottweet.content
-          - if current_user.favorited?(nottweet)
-            td= link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
-          - else
-            td= link_to "Favorite", favorite_path(nottweet.id), remote: true
-          td.when= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
+table
+  tbody
+    - nottweets.each do |nottweet|
+      tr
+        td.avatar= image_tag nottweet.user.avatar.url(:thumb)
+        td= link_to nottweet.user.username, user_path(nottweet.user.id)
+        td.content
+          = auto_link nottweet.content
+          - if nottweet.attachment?
+            = link_to "Show Attachment", "#", class: "show_attachment"
+            .attachment.hide= link_to (image_tag nottweet.attachment.url), nottweet.attachment.url
+        - if current_user.favorited?(nottweet)
+          td= link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
+        - else
+          td= link_to "Favorite", favorite_path(nottweet.id), remote: true
+        td.when= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago

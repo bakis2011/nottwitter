@@ -43,7 +43,7 @@ class NottweetsController < ApplicationController
   private
 
   def nottweet_params
-    params.require(:nottweet).permit(:content)
+    params.require(:nottweet).permit(:content, :attachment)
   end
 
   def timeline_nottweets
@@ -57,7 +57,7 @@ class NottweetsController < ApplicationController
       @mentions.each do |mention|
         user = User.find_by(username: mention)
         @nottweet.content.sub!("@"+user.username, "<a href=\"/users/#{user.id.to_s}\">@#{user.username}</a>") if user
-        Notification.create(user_id: user.id, content: "<a href=\"/users/#{current_user.id.to_s}\">#{current_user.username}</a> mentioned you in his tweet \"#{@nottweet.content}\"")
+        Notification.create(user_id: user.id, content: "<a href=\"/users/#{current_user.id.to_s}\">#{current_user.username}</a> mentioned you in his bork \"#{@nottweet.content}\"")
       end
     end
   end

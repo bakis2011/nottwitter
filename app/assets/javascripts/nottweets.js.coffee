@@ -1,3 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('#nottweet_content').click (e) ->
+    e.preventDefault()
+    $(this).addClass('nottweeting')
+    $('.attachment').addClass('nottweeting')
+
+  $('.show_attachment').click (e) ->
+    e.preventDefault()
+    attachment = $(this).siblings('.attachment')
+    if attachment.hasClass('hide')
+      $(this).text('Hide Attachment')
+    else
+      $(this).text('Show Attachment')
+    attachment.toggleClass('hide')
+

@@ -3,6 +3,7 @@ class Nottweet < ActiveRecord::Base
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  mount_uploader :attachment, AvatarUploader
 
   if Rails.env.development?
     searchable do

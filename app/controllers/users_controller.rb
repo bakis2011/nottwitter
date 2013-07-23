@@ -56,7 +56,7 @@ class UsersController < ApplicationController
         render "edit"
       end
     else
-      if @user.update_attributes(username: params[:user][:username], email: params[:user][:email])
+      if @user.update_attributes(username: params[:user][:username], email: params[:user][:email], avatar: params[:user][:avatar])
         redirect_to user_path(@user.id), notice: "Profile Updated"
       else
         render "edit"

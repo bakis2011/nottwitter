@@ -1,5 +1,9 @@
 = form_for @nottweet do |f|
   .row
-    = f.text_area :content, placeholder: "Compose a new NotTweet..."
+    = f.text_area :content, placeholder: "Compose a new Bork..."
   .row
-    = f.submit "Not Tweet", class: "button small"
+    .large-6.small-6.columns
+      .attachment
+        = f.file_field :attachment
+    .large-6.small-6.columns
+      = f.submit "Bork", class: "button small"

@@ -1,6 +1,28 @@
 form
-  margin-top: 10px
+  margin: 40px 10px 0 0
+
+  textarea
+    resize: none
+
+    &.nottweeting
+      height: 100px
+  .attachment
+    display: none
+
+    &.nottweeting
+      display: block
+
 table
   width: 100%
+  position: relative
   .when, .favorite
     width: 150px
+
+  td.content
+    position: relative
+    padding: 20px !important
+
+  .show_attachment, .hide_attachment
+    left: 0
+    bottom: 0
+    position: absolute
