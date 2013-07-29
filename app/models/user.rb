@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def following?(user)
-    relationships.find_by(followed_id: user.id).present?
+    relationships.exists?(followed_id: user.id)
   end
 
   def follow(user)
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
 
   def favorited?(nottweet)
-    favorites.find_by(nottweet_id: nottweet.id).present?
+    favorites.exists?(nottweet_id: nottweet.id)
   end
 
   def favorite(nottweet)

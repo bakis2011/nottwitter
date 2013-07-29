@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20130722203551) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "read"
+    t.boolean  "read",       default: false
   end
 
   create_table "nottweets", force: true do |t|

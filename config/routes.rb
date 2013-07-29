@@ -1,6 +1,5 @@
 Nottwitter::Application.routes.draw do
 
-  resources :notifications
 
   root 'nottweets#index'
 
@@ -22,9 +21,10 @@ Nottwitter::Application.routes.draw do
 
   get 'nottweets/search/:hashtag' => 'nottweets#hashtag', as: 'hastag_search'
 
-  resources :users
   resources :sessions
+  resources :users
   resources :nottweets
+  resources :notifications
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

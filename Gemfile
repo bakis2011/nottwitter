@@ -24,7 +24,8 @@ gem 'compass-rails'
 gem 'zurb-foundation'
 
 # see https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
+
 # time ago for tweet dates
 gem 'rails-timeago', '~> 2.0'
 
@@ -39,19 +40,13 @@ gem 'mini_magick'
 
 # pagination
 gem 'kaminari'
-gem 'spaghetti'
 
 # use jquery as the javascript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-# turbolinks makes following links in your web application faster. read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
-
+# for heroku assets
 gem 'rails_12factor', group: :production
-
-# build json apis with ease. read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.0.1'
 
 group :doc do
   # bundle exec rake doc:rails generates the api under doc/api.
@@ -72,12 +67,3 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # zeus for faster dev server
 gem 'zeus'
-
-# use unicorn as the app server
-# gem 'unicorn'
-
-# use capistrano for deployment
-# gem 'capistrano', group: :development
-
-# use debugger
-# gem 'debugger', group: [:development, :test]
