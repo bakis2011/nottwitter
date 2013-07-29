@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize, except: [:destroy]
   def new
+    @user = User.new
   end
 
   def create

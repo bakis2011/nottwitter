@@ -5,29 +5,29 @@
         = @user.errors.full_messages.join(', ')
         a.close href="#" &times;
   .row
-    .large-2.small-3.columns
+    .large-1.small-3.columns
       = f.label :username, class: "right inline"
-    .large-3.small-4.columns.end
+    .large-3.small-5.columns.end
       = f.text_field :username
   .row
-    .large-2.small-3.columns
+    .large-1.small-3.columns
       = f.label :email, class: "right inline"
-    .large-3.small-4.columns.end
+    .large-3.small-5.columns.end
       = f.text_field :email
   .row
-    .large-2.small-3.columns
+    .large-1.small-3.columns
       = f.label :password, class: "right inline"
-    .large-3.small-4.columns.end
+    .large-3.small-5.columns.end
       = f.password_field :password
   .row
-    .large-2.small-3.columns
+    .large-1.small-3.columns
       = f.label :password_confirmation, class: "right inline"
-    .large-3.small-4.columns.end
+    .large-3.small-5.columns.end
       = f.password_field :password_confirmation
   .row
-    .large-2.small-3.columns
+    .large-1.small-3.columns
       = f.label :avatar, class: "right inline"
-    .large-3.small-4.columns.end
+    .large-3.small-5.columns.end
       = f.file_field :avatar
 
   .row

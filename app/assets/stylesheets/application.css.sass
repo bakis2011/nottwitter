@@ -10,19 +10,12 @@
  *
  *= require_self
  *= require foundation_and_overrides
- *= require spaghetti
  *= require_tree .
  */
 @import bourbon/bourbon
 
 .logo
-  margin-bottom: 3px
-  display: inline-block !important
   +transition(all .4s ease-in)
 
   &:hover
     +transform(rotate(360deg))
-
-.title
-  display: inline-block !important
-  position: absolute

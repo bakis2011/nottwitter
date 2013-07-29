@@ -1,19 +1,27 @@
-.row
-  h1 Log In~
-= form_tag sessions_path do
+.splash
+.splash-content
   .row
-    .large-1.small-3.columns
-      = label_tag :username, "Username", class: "right inline"
-    .large-3.small-5.columns.end
-      = text_field_tag :username
+    h1 Log In~
+  = form_tag sessions_path do
+    .row
+      .large-1.small-3.columns
+        = label_tag :username, "Username", class: "right inline"
+      .large-3.small-5.columns.end
+        = text_field_tag :username
+    .row
+      .large-1.small-3.columns
+        = label_tag :password, "Password", class: "right inline"
+      .large-3.small-5.columns.end
+        = password_field_tag :password
+    .row
+      .large-offset-1.small-offset-3.columns
+        = submit_tag "Log In", class: "button"
   .row
-    .large-1.small-3.columns
-      = label_tag :password, "Password", class: "right inline"
-    .large-3.small-5.columns.end
-      = password_field_tag :password
-  .row
-    .large-offset-1.small-offset-3.columns
-      = submit_tag "Log In", class: "button"
-  h3
-    | New to Borker?
-    = link_to " Sign Up", new_user_path
+    .large-4.small-8.columns
+      h3
+        | New to Borker? Sign up
+    .large-8.small-4.columns
+      h3 Welcome To Borker
+      h4 bork bork bork bork bork bork bork. bork bork! bork... bork bork
+    .row
+      = render 'users/form'
