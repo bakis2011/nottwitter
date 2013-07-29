@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships
   has_many :followed, through: :relationships
 
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 

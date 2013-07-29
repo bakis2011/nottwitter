@@ -7,7 +7,6 @@ class NotificationsController < ApplicationController
 
 private
   def read_all
-    @notifications = Notification.where(user_id: current_user.id)
-    @notifications.map {|notification| notification.mark_as_read }
+    current_user.notifications.update_all(read: true)
   end
 end

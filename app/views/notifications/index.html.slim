@@ -3,5 +3,7 @@
     tbody
       - @notifications.each do |notification|
         tr class="#{'unread' unless notification.read}"
-          td= auto_link(notification.content)
+          td
+            = link_to "@#{notification.author.username}", user_path(notification.author.id)
+            = auto_link(notification.content)
           td= timeago_tag notification.created_at, nojs: true, limit: 10.days.ago

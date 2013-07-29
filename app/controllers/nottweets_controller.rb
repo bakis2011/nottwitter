@@ -52,8 +52,7 @@ class NottweetsController < ApplicationController
   end
 
   def timeline_nottweets
-    user_ids = current_user.followed.map(&:id)
-    Nottweet.where(user_id: user_ids)
+    Nottweet.where(user_id: current_user.followed_ids)
   end
 
   def find_mentions
@@ -62,7 +61,7 @@ class NottweetsController < ApplicationController
       @mentions.each do |mention|
         user = User.find_by(username: mention)
         @nottweet.content.sub!("@"+user.username, "<a href=\"/users/#{user.id.to_s}\">@#{user.username}</a>") if user
-        Notification.create(user_id: user.id, content: "<a href=\"/users/#{current_user.id.to_s}\">#{current_user.username}</a> mentioned you in his bork \"#{@nottweet.content}\"")
+        Notification.create(author: current_user, user: user, content: " mentioned you in his bork \"#{@nottweet.content}\"")
       end
     end
   end

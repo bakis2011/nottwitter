@@ -2,7 +2,7 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:id])
     current_user.follow(@user)
-    Notification.create(user_id: @user.id, content: "<a href=\"/users/#{current_user.id.to_s}\">#{current_user.username}</a> is now following you!")
+    Notification.create(author: current_user, user: @user, content: " followed you!")
     respond_to do |format|
       format.js
     end
@@ -11,7 +11,7 @@ class RelationshipsController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     current_user.unfollow(@user)
-    Notification.find_by(user_id: @user.id, content: "<a href=\"/users/#{current_user.id.to_s}\">#{current_user.username}</a> is now following you!").destroy
+    Notification.find_by(author: current_user, user: @user, content: " followed you!").destroy
     respond_to do |format|
       format.js
     end
