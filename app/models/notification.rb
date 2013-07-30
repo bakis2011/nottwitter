@@ -1,5 +1,6 @@
 class Notification < ActiveRecord::Base
   belongs_to :user
+  belongs_to :nottweet
   belongs_to :author, class_name: "User"
 
   def mark_as_read

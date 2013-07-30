@@ -1,0 +1,4 @@
+en:
+  follow: "%{author} followed you!"
+  favorite: "%{author} favorited your bork: \"%{nottweet}\""
+  mention: "%{author} mentioned you in his bork: \"%{nottweet}\""

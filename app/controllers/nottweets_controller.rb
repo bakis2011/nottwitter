@@ -27,6 +27,10 @@ class NottweetsController < ApplicationController
     end
   end
 
+  def show
+    @nottweet = Nottweet.find(params[:id])
+  end
+
   def hashtag
     if Rails.env.development?
       @hashtag = params[:hashtag]
@@ -61,7 +65,7 @@ class NottweetsController < ApplicationController
       @mentions.each do |mention|
         user = User.find_by(username: mention)
         @nottweet.content.sub!("@"+user.username, "<a href=\"/users/#{user.id.to_s}\">@#{user.username}</a>") if user
-        Notification.create(author: current_user, user: user, content: " mentioned you in his bork \"#{@nottweet.content}\"")
+        Notification.create(author: current_user, user: user, nottweet: @nottweet, action: "mention")
       end
     end
   end
