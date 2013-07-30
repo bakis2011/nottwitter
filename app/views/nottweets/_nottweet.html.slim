@@ -1,16 +1,18 @@
-tr
-  td.avatar= image_tag nottweet.user.avatar.url(:thumb)
-  td.username= link_to nottweet.user.username, user_path(nottweet.user.id)
-  td.content
-    = auto_link nottweet.content
+.bork
+  .avatar.left= image_tag nottweet.user.avatar.url(:thumb), size: "60x60"
+  .content.left
+    .user= link_to "@"+nottweet.user.username, user_path(nottweet.user.id)
+    .text= auto_link nottweet.content
     - if nottweet.attachment?
       = link_to "Show Attachment", "#", class: "show_attachment"
       .attachment.hide= link_to (image_tag nottweet.attachment.url), nottweet.attachment.url
-  td.actions
-    - if current_user.favorited?(nottweet)
-      = link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
-    - else
-      = link_to "Favorite", favorite_path(nottweet.id), remote: true
-    - if nottweet.user == current_user
-      = link_to "Delete", nottweet_path(nottweet.id), method: :delete, class: "delete_bork", data: { confirm: "You sure you wanna unbork it?"}
-  td.when= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
+  .right
+    .when= timeago_tag nottweet.created_at, nojs: true, limit: 10.days.ago
+    .actions
+      - if current_user.favorited?(nottweet)
+        = link_to "Unfavorite", unfavorite_path(nottweet.id), remote: true
+      - else
+        = link_to "Favorite", favorite_path(nottweet.id), remote: true
+      = link_to "Rebork", "#"
+      - if nottweet.user == current_user
+        = link_to "Delete", nottweet_path(nottweet.id), method: :delete, data: { confirm: "You sure you wanna unbork it?"}
