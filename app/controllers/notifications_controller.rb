@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   after_action :read_all
 
   def index
-    @notifications = current_user.notifications.order('created_at DESC')
+    @notifications = current_user.notifications.order('created_at DESC').page(params[:page]).per(50)
   end
 
 private

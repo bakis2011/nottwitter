@@ -1,0 +1,3 @@
+tr class="#{'unread' unless notification.read}"
+  td= link_to (auto_link t notification.action, author: (link_to "@"+notification.user.username, user_path(notification.user_id)), nottweet: notification.content), nottweet_path(notification.nottweet_id)
+  td= timeago_tag notification.created_at, nojs: true, limit: 10.days.ago

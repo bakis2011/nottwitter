@@ -7,4 +7,8 @@ class Notification < ActiveRecord::Base
     self.read = true
     self.save
   end
+
+  def content
+    nottweet ? nottweet.content : nil
+  end
 end
