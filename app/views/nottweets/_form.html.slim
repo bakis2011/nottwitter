@@ -1,9 +1,10 @@
 = form_for @nottweet do |f|
   .row
-    = f.text_area :content, placeholder: "Compose a new Bork..."
-  .row
+    .large-12.small-12.columns
+      = f.text_area :content, placeholder: "Compose a new Bork..."
+  .row.nottweet-action.hide
     .large-6.small-6.columns
       .attachment
         = f.file_field :attachment
     .large-6.small-6.columns
-      = f.submit "Bork", class: "button small"
+      = f.submit "Bork", class: "button small right"

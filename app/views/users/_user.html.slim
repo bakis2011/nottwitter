@@ -1,12 +1,13 @@
-.user-row
-  .avatar.left= image_tag(user.avatar.url(:thumb), size: "60x60")
-  .content.left
-    .user= link_to user.username, user_path(user.id)
-  .right
-    .when= user.created_at.strftime("%b %d")
-    .user-actions
+.row.user-row
+  .small-2.columns.avi
+    .avatar= image_tag(user.avatar.url(:thumb), size: "60x60")
+  .small-8.columns.content
+    .username= link_to "@"+user.username, user_path(user.id)
+    .text
       - if current_user and user != current_user
         - if current_user.following?(user)
-          .follow= link_to "Unfollow", unfollow_path(user.id), remote: true
+          .follow= link_to "Unfollow", unfollow_path(user.id), class: "button small", remote: true
         - else
-          .follow= link_to "Follow", follow_path(user.id), remote: true
+          .follow= link_to "Follow", follow_path(user.id), class: "button small", remote: true
+  .small-2.columns.when
+    .time= user.created_at.strftime("%b %d")

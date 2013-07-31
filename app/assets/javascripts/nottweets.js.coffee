@@ -1,8 +1,11 @@
 $ ->
-  $('#nottweet_content').click (e) ->
+  $('textarea').focus (e) ->
     e.preventDefault()
-    $(this).addClass('nottweeting')
-    $('.attachment').addClass('nottweeting')
+    $('.nottweet-action').removeClass('hide')
+
+  $('textarea').focusout (e) ->
+    e.preventDefault()
+    $('.nottweet-action').addClass('hide')
 
   $('.show_attachment').click (e) ->
     e.preventDefault()

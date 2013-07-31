@@ -1293,3 +1293,15 @@ $default-float: left;
 .contain-to-grid .top-bar {
   margin-bottom: 0;
 }
+
+.small-2.columns.avi {
+  width: 60px;
+  min-width: 60px;
+  margin-right: 10px;
+}
+.small-8.columns.content {
+  width: 72%;
+}
+.small-2.columns.when {
+  width: 15%;
+}
