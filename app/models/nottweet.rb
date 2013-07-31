@@ -13,4 +13,5 @@ class Nottweet < ActiveRecord::Base
       text :content
     end
   end
+
 end
