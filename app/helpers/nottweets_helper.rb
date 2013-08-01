@@ -6,8 +6,8 @@ module NottweetsHelper
       return content.gsub(REGEXP) do |match|
         case $~.captures.compact[1]
           when "@" then
-            id = User.find_by(username: match[1..-1]).id
-            "<a href='/users/#{id}'>#{match}</a>"
+            id = User.find_by(username: match[1..-1]).try(:id)
+            id ? "<a href='/users/#{id}'>#{match}</a>" : match
           when "#" then "<a href='/search/#{match[1..-1]}'>#{match}</a>"
         end
       end
