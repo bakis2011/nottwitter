@@ -1,11 +1,13 @@
 $ ->
-  $('textarea').focus (e) ->
-    e.preventDefault()
-    $('.nottweet-action').removeClass('hide')
-
-  $('textarea').focusout (e) ->
-    e.preventDefault()
-    $('.nottweet-action').addClass('hide')
+  $(document).click (e) ->
+    obj = e.target
+    form = $(obj).closest('#new_nottweet')
+    if form.length > 0
+      $('.nottweet-action').removeClass('hide')
+      $('#nottweet_content').addClass('focus')
+    else
+      $('.nottweet-action').addClass('hide')
+      $('#nottweet_content').removeClass('focus')
 
   $('.show_attachment').click (e) ->
     e.preventDefault()
