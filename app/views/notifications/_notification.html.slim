@@ -1,5 +1,5 @@
 .row.notification class="#{'unread' unless notification.read}"
   .small-10.columns
-    .text= link_to (auto_link t notification.action, author: (link_to "@"+notification.user.username, user_path(notification.user_id)), nottweet: linkify_keywords(notification.nottweet)), nottweet_path(notification.nottweet_id)
+    .text= link_to (auto_link t notification.action, author: (link_to "@"+notification.author.username, user_path(notification.user_id)), nottweet: linkify_keywords(notification.nottweet)), nottweet_path(notification.nottweet_id)
   .small-2.columns
     .when= timeago_tag notification.created_at, nojs: true, limit: 10.days.ago
