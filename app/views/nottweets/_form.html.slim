@@ -4,7 +4,18 @@
       = f.text_area :content, placeholder: "Compose a new Bork..."
   .row.nottweet-action.hide
     .large-6.small-6.columns
+      = link_to "Jamesify", jamesify_bork_path, remote: true, method: :post, id: "jamesify"
       .attachment
         = f.file_field :attachment
     .large-6.small-6.columns
       = f.submit "Bork", class: "button small right"
+
+javascript:
+  var path = "#{jamesify_bork_path}"
+coffee:
+  $ ->
+    $("#jamesify").click (e) ->
+      e.preventDefault()
+      $.ajax
+        url: path
+        data: {bork: $('#nottweet_content').val()}

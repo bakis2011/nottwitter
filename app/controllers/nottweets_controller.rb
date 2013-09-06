@@ -10,6 +10,26 @@ class NottweetsController < ApplicationController
     @nottweet = Nottweet.new
   end
 
+  def jamesify
+    text = params[:bork].downcase
+
+    (text.length/75).round.times do
+      text[rand(text.length)] = ('a'..'z').to_a.push('').sample
+    end
+    text[rand(text.length)] = ''
+    text_array = text.downcase.split(' ')
+
+    (text_array.length/1.5).round.times do
+      text_array.sample.squeeze!
+    end
+
+    (text_array.length/4).round.times do
+      text_array.sample.capitalize!
+    end
+
+    @james_bork = text_array.join(' ')
+  end
+
   def create
     @nottweet = Nottweet.new(nottweet_params)
     @nottweet.user = current_user

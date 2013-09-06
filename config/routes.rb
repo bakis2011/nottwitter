@@ -21,6 +21,8 @@ Nottwitter::Application.routes.draw do
 
   get 'nottweets/search/:hashtag' => 'nottweets#hashtag', as: 'hastag_search'
 
+  get 'jamesify' => 'nottweets#jamesify', as: 'jamesify_bork'
+
   resources :sessions
   resources :users
   resources :nottweets
