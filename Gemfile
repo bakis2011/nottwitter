@@ -10,6 +10,9 @@ gem 'pg'
 # slim
 gem 'slim-rails'
 
+# sessions for heroku spin down
+gem 'activerecord-session_store'
+
 # use scss for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
