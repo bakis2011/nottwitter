@@ -1,1 +1,1 @@
-$('.nottweets').html("<%=j render @names %>")
+$('.nottweets').html("<%=j render @nottweets %>")

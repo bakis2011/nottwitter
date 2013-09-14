@@ -35,9 +35,6 @@ class NottweetsController < ApplicationController
     @nottweet.user = current_user
     @nottweet.content = strip_tags(@nottweet.content)
 
-    # find_mentions
-    # find_hashtags
-
     if @nottweet.save
       redirect_to root_url, notice: "Thanks for Borking!"
     else
@@ -46,6 +43,7 @@ class NottweetsController < ApplicationController
   end
 
   def refresh
+    @nottweets = timeline_nottweets.order('created_at DESC').page(params[:page]).per(50)
   end
 
   def show
