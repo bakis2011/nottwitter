@@ -45,6 +45,9 @@ class NottweetsController < ApplicationController
     end
   end
 
+  def refresh
+  end
+
   def show
     @nottweet = Nottweet.find(params[:id])
   end
