@@ -43,7 +43,7 @@ class NottweetsController < ApplicationController
   end
 
   def refresh
-    @nottweets = timeline_nottweets.order('created_at DESC').page(params[:page]).per(50)
+    @nottweets = params[:nottweets]
   end
 
   def show
