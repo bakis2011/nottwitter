@@ -22,7 +22,10 @@ coffee:
         data: {bork: $('#nottweet_content').val()}
 
     $("#nottweet_content").keyup (e) ->
+      $(".charactercount").removeClass("too-long");
       if this.value.length > 0
         $(".charactercount").html(this.value.length+"/160");
+        if this.value.length > 160
+          $(".charactercount").addClass("too-long");
       else
         $(".charactercount").html("");
