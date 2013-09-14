@@ -19,7 +19,7 @@ html lang="en"
           ul.right
             li= link_to "Borkers", users_path
             - if current_user
-              li= link_to "Notifications (#{current_user.notifications.where.not(read: true).count})", notifications_path
+              li= link_to "Notifications (#{current_user.notifications.where("notifications.read IS NULL OR notifications.read IS FALSE").count})", notifications_path
               li= link_to current_user.username.capitalize, user_path(current_user.id)
               li= link_to "Log Out", logout_path
             - else
