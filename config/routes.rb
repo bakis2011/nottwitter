@@ -3,8 +3,6 @@ Nottwitter::Application.routes.draw do
 
   root 'nottweets#index'
 
-  get 'refresh/:nottweets' => 'nottweets#refresh', as: 'refresh'
-
   get 'sessions/new', as: 'login'
   get 'sessions/create'
   get 'sessions/destroy', as: 'logout'

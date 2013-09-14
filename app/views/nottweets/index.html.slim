@@ -7,13 +7,3 @@
     .nottweets
       = render @nottweets
     = paginate @nottweets
-
-javascript:
-  var url = "#{refresh_path(@nottweets)}"
-
-coffee:
-  $ ->
-    setInterval (->
-      $.ajax
-        url: url
-    ), 5000
