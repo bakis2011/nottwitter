@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      Relationship.create(followed_id: @user.id, follower_id: @user.id)
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Thanks for signing up, #{@user.username}"
     else
@@ -22,17 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @following = Relationship.where(follower_id: @user.id)
-    @followers = Relationship.where(followed_id: @user.id)
     @nottweets = Nottweet.where(user_id: @user.id).order('created_at DESC').page(params[:page]).per(50)
-  end
-
-  def following
-    @following = Relationship.where(follower_id: params[:id]).order('created_at DESC').map(&:followed)
-  end
-
-  def followers
-    @followers = Relationship.where(followed_id: params[:id]).order('created_at DESC').map(&:follower)
   end
 
   def favorites
