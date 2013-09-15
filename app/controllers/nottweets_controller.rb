@@ -2,7 +2,7 @@ class NottweetsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
-    @nottweets = Nottweet.all
+    @nottweets = Nottweet.all.order('created_at DESC').page(params[:page]).per(50)
     @nottweet = Nottweet.new
   end
 
@@ -41,6 +41,7 @@ class NottweetsController < ApplicationController
       render "new"
     end
   end
+
 
   def show
     @nottweet = Nottweet.find(params[:id])
