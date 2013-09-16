@@ -8,7 +8,7 @@ class NottweetsController < ApplicationController
   end
 
   def borks_for_app
-    render json: Nottweet.all.order('created_at DESC')
+    render json: Nottweet.all.limit(50).order('created_at DESC')
   end
 
   def new
