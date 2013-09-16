@@ -59,10 +59,6 @@ end
 group :development do
   gem 'pry-rails'
   gem 'pry-plus'
-
-  # searching
-  gem 'sunspot_rails', '~> 2.0.0'
-  gem 'sunspot_solr'
 end
 
 # use activemodel has_secure_password

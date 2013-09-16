@@ -1,9 +1,14 @@
 class NottweetsController < ApplicationController
   include ActionView::Helpers::TextHelper
+  skip_before_filter :authorize, only: [:borks_for_app]
 
   def index
     @nottweets = Nottweet.all.order('created_at DESC').page(params[:page]).per(50)
     @nottweet = Nottweet.new
+  end
+
+  def borks_for_app
+    render json: Nottweet.all.order('created_at DESC')
   end
 
   def new
@@ -45,19 +50,6 @@ class NottweetsController < ApplicationController
 
   def show
     @nottweet = Nottweet.find(params[:id])
-  end
-
-  def hashtag
-    if Rails.env.development?
-      @hashtag = params[:hashtag]
-      @search = Nottweet.search do
-        keywords params[:hashtag]
-      end
-      @results = @search.results
-    else
-      @results = []
-      flash[:alert] = "Unforntunately, searching only works in development"
-    end
   end
 
   def destroy

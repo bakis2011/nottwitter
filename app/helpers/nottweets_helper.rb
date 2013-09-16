@@ -11,7 +11,7 @@ module NottweetsHelper
             else
               match
             end
-          when "#" then "<a href='nottweets/search/#{match[1..-1]}'>#{match}</a>"
+          when "#" then "<a href='#'>#{match}</a>"
         end
       end
     end

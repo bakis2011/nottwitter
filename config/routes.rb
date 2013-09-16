@@ -13,9 +13,8 @@ Nottwitter::Application.routes.draw do
   get 'nottweets/:id/favorite' => 'favorites#create', as: 'favorite'
   get 'nottweets/:id/unfavorite' => 'favorites#destroy', as: 'unfavorite'
 
-  get 'nottweets/search/:hashtag' => 'nottweets#hashtag', as: 'hastag_search'
-
   get 'jamesify' => 'nottweets#jamesify', as: 'jamesify_bork'
+  get 'borks_for_app.json' => 'nottweets#borks_for_app'
 
   resources :sessions
   resources :users
