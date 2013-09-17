@@ -18,7 +18,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "/assets/default.jpg"
+    "https://herokuapp.com/assets/default.jpg"
   end
 
   # Create different versions of your uploaded files:
