@@ -3,7 +3,7 @@
     .avatar= image_tag nottweet.user.avatar.url(:thumb), size: "60x60"
   .small-8.columns.content
     .user= link_to "@"+nottweet.user.username, user_path(nottweet.user.id)
-    .text
+    .text class="#{'no-wrap' if nottweet.id == 998}"
       = auto_link linkify_keywords(nottweet)
     - if nottweet.attachment?
       = link_to "Show Attachment", "#", class: "show_attachment"
