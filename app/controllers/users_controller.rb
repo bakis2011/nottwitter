@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def authenticate
+    @user = User.find_by(username: params[:username])
+    return @user.authenticate(params[:password])
+  end
+
   def new
     @user = User.new
   end
