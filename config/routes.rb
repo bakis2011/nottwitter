@@ -8,6 +8,7 @@ Nottwitter::Application.routes.draw do
   get 'sessions/destroy', as: 'logout'
 
   get 'signup' => 'users#new', as: 'signup'
+  post 'authenticate' => 'users#authenticate'
 
   get 'users/:id/favorites' => 'users#favorites', as: 'favorites'
   get 'nottweets/:id/favorite' => 'favorites#create', as: 'favorite'
