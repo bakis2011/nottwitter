@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :authorize, only: [:index, :new, :create, :show]
-  skip_before_filter :verify_authenticity_token, if: lambda {params[:api_key].present?}
+  skip_before_filter :verify_authenticity_token, only: [:authenticate]
   AUTH_TOKEN = "wVdLktWLHkZZOxE4aEaPig"
+
   def index
     @users = User.order('created_at DESC')
     respond_to do |format|
