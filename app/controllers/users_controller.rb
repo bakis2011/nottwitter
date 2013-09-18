@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:index, :new, :create, :show]
+  skip_before_action :authorize, only: [:index, :new, :create, :show, :authenticate]
   skip_before_filter :verify_authenticity_token, only: [:authenticate]
   AUTH_TOKEN = "wVdLktWLHkZZOxE4aEaPig"
 
@@ -14,9 +14,13 @@ class UsersController < ApplicationController
   def authenticate
     if (params[:api_key] == AUTH_TOKEN)
       @user = User.find_by(username: params[:username])
-      return @user.authenticate(params[:password])
+      if (@user)
+        render json: @user.authenticate(params[:password]).present?
+      else
+        render json: false
+      end
     else
-      return false
+      render json: false
     end
   end
 
