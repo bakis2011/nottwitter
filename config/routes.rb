@@ -3,6 +3,12 @@ Nottwitter::Application.routes.draw do
 
   root 'nottweets#index'
 
+  namespace :api do
+    resources :users, only: [:index, :authenticate]
+    resources :nottweets, only: [:index, :create]
+    resources :notifications, only: [:index]
+  end
+
   get 'sessions/new', as: 'login'
   get 'sessions/create'
   get 'sessions/destroy', as: 'logout'
