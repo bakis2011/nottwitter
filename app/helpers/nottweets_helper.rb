@@ -6,7 +6,8 @@ module NottweetsHelper
         case $~.captures.compact[1]
           when "@" then
             if user = User.find_by(username: match[1..-1])
-              Notification.find_or_create_by(author: current_user, user: user, action: "mention", nottweet: nottweet)
+              author = Nottweet.find_by(content: nottweet.content).user
+              Notification.find_or_create_by(author: author, user: user, action: "mention", nottweet: nottweet)
               "<a href='/users/#{user.id}'>#{match}</a>"
             else
               match

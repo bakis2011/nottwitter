@@ -12,10 +12,6 @@ class UsersController < ApplicationController
   end
 
   def authenticate
-    puts params
-    puts params[:api_key]
-    puts params[:password]
-    puts params[:username]
     if (params[:api_key] == AUTH_TOKEN)
       @user = User.find_by(username: params[:username])
       if (@user)
