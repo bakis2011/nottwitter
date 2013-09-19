@@ -5,37 +5,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order('created_at DESC')
-    respond_to do |format|
-      format.html
-      format.json { render json: @users}
-    end
-  end
-
-  def authenticate
-    if (params[:api_key] == AUTH_TOKEN)
-      @user = User.find_by(username: params[:username])
-      if (@user)
-        render json: @user.authenticate(params[:password]).present?
-      else
-        render json: false
-      end
-    else
-      render json: false
-    end
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_url, notice: "Thanks for signing up, #{@user.username}"
-    else
-      render "new"
-    end
   end
 
   def show
