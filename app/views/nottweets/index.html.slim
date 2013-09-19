@@ -3,7 +3,9 @@
     = render 'nottweets/form'
   .small-9.large10.columns
     h1 Borks
-    = paginate @nottweets
-    .nottweets
-      = render @nottweets
-    = paginate @nottweets
+    = render Nottweet.find(1047)
+    .hide
+      = paginate @nottweets
+      .nottweets
+        = render @nottweets
+      = paginate @nottweets
