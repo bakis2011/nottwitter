@@ -1,5 +1,8 @@
 .row.notifications
   table
     tbody
-      = render @notifications
-      = paginate @notifications
+      - if @notifications.present?
+        = render @notifications
+        = paginate @notifications
+      - else
+        | You currently have no notifications!

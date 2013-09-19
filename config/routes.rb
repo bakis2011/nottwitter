@@ -4,7 +4,8 @@ Nottwitter::Application.routes.draw do
   root 'nottweets#index'
 
   namespace :api do
-    resources :users, only: [:index, :authenticate]
+    resources :users, only: [:index]
+    get 'authenticate' => 'users#authenticate'
     resources :nottweets, only: [:index, :create]
     resources :notifications, only: [:index]
   end
@@ -14,8 +15,6 @@ Nottwitter::Application.routes.draw do
   get 'sessions/destroy', as: 'logout'
 
   get 'signup' => 'users#new', as: 'signup'
-  post 'authenticate' => 'users#authenticate'
-
   get 'users/:id/favorites' => 'users#favorites', as: 'favorites'
   get 'nottweets/:id/favorite' => 'favorites#create', as: 'favorite'
   get 'nottweets/:id/unfavorite' => 'favorites#destroy', as: 'unfavorite'
