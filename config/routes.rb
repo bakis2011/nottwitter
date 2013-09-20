@@ -5,7 +5,7 @@ Nottwitter::Application.routes.draw do
 
   namespace :api do
     resources :users, only: [:index]
-    get 'authenticate' => 'users#authenticate'
+    post 'authenticate' => 'users#authenticate'
     resources :nottweets, only: [:index, :create]
     resources :notifications, only: [:index]
   end
