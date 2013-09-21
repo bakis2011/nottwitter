@@ -6,6 +6,7 @@ class Api::NottweetsController < ApiController
         render json: Nottweet.all.limit(params[:limit]).where('created_at < ?', older_than).order('created_at DESC')
       elsif params[:since].present?
         since = Time.parse(params[:since])
+        binding.pry
         render json: Nottweet.all.limit(params[:limit]).where('created_at > ?', since).order('created_at DESC')
       else
         render json: "No time parameter given"
