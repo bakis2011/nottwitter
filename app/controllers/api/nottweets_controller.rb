@@ -14,4 +14,17 @@ class Api::NottweetsController < ApiController
       render json: "No bork limit given" unless params[:limit].present?
     end
   end
+
+  def create
+    if params[:content].present? && params[:username].present?
+      if params[:content].length > 160
+        render json: "Bork content too long"
+      else
+        Nottweet.create(content: params[:content], user_id: User.find_by(username: params[:username]).id)
+        render json: true
+      end
+    else
+      render json: false
+    end
+  end
 end
