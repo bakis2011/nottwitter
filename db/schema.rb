@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20130923145908) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar"
-    t.string   "device_tokens",   default: "--- []\n"
   end
 
 end
