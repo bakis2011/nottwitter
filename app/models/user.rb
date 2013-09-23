@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :notifications, dependent: :destroy
 
-  has_many :apns
+  has_many :apns, class_name: "Apns"
 
   mount_uploader :avatar, AvatarUploader
 
