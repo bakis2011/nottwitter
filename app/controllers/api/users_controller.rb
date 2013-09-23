@@ -14,7 +14,6 @@ class Api::UsersController < ApiController
   end
 
   def add_token
-    binding.pry
     @user = User.find_by(username: params[:password])
     if @token = Apns.find_by(token: params[:token])
       @token.user = @user
