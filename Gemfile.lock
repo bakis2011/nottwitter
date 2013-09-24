@@ -177,8 +177,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
-    rename (1.0.0)
-      rails (>= 3.0.0)
     ruby-hmac (0.4.0)
     sanitize (2.0.6)
       nokogiri (>= 1.4.4)
@@ -252,7 +250,6 @@ DEPENDENCIES
   rails-timeago (~> 2.0)
   rails_12factor
   rails_autolink
-  rename
   sanitize
   sass-rails (~> 4.0.0.rc1)
   sdoc
