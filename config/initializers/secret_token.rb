@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Nottwitter::Application.config.secret_key_base = '949933cbfee354b9863692f90f05a8eeb26c93b52551df4827c8d9594cdb2131d00672b7d50752cbc4532aa6c116ecce4844bfc3d510c39d7abee53e69c65b94'
+Borker::Application.config.secret_key_base = '949933cbfee354b9863692f90f05a8eeb26c93b52551df4827c8d9594cdb2131d00672b7d50752cbc4532aa6c116ecce4844bfc3d510c39d7abee53e69c65b94'

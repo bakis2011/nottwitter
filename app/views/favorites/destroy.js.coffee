@@ -1,3 +1,3 @@
-link = $('a[href="/nottweets/<%= @nottweet.id %>/unfavorite"]')
+link = $('a[href="/borks/<%= @bork.id %>/unfavorite"]')
 link.text("Favorite")
-link.attr("href", "/nottweets/<%= @nottweet.id %>/favorite")
+link.attr("href", "/borks/<%= @bork.id %>/favorite")

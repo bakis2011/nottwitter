@@ -1,0 +1,19 @@
+.bork.row
+  .small-2.columns.avi
+    .avatar= image_tag bork.user.avatar.url(:thumb), size: "60x60"
+  .small-8.columns.content
+    .user= link_to "@"+bork.user.username, user_path(bork.user.id)
+    .text class="#{'no-wrap' if bork.id == 998}"
+      = auto_link linkify_keywords(bork)
+    - if bork.attachment?
+      = link_to "Show Attachment", "#", class: "show_attachment"
+      .attachment.hide= link_to (image_tag bork.attachment.url), bork.attachment.url
+  .small-2.columns.when
+    .time= timeago_tag bork.created_at, nojs: true, limit: 10.days.ago
+  .actions
+    - if current_user.favorited?(bork)
+      = link_to "Unfavorite", unfavorite_path(bork.id), remote: true
+    - else
+      = link_to "Favorite", favorite_path(bork.id), remote: true
+    - if bork.user == current_user
+      = link_to "Delete", bork_path(bork.id), method: :delete, data: { confirm: "You sure you wanna unbork it?"}

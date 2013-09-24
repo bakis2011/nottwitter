@@ -1,6 +1,6 @@
 class Notification < ActiveRecord::Base
   belongs_to :user
-  belongs_to :nottweet
+  belongs_to :bork
   belongs_to :author, class_name: "User"
 
   def mark_as_read
@@ -9,6 +9,6 @@ class Notification < ActiveRecord::Base
   end
 
   def content
-    nottweet ? nottweet.content : nil
+    bork ? bork.content : nil
   end
 end

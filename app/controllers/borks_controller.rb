@@ -1,15 +1,15 @@
-class NottweetsController < ApplicationController
+class BorksController < ApplicationController
   include ActionView::Helpers::TextHelper
   skip_before_filter :authorize, only: [:borks_for_app]
 
   def index
-    @nottweets = Nottweet.all.order('created_at DESC').page(params[:page]).per(50)
-    @nottweet = Nottweet.new
+    @borks = Bork.all.order('created_at DESC').page(params[:page]).per(50)
+    @bork = Bork.new
   end
 
 
   def new
-    @nottweet = Nottweet.new
+    @bork = Bork.new
   end
 
   def jamesify
@@ -33,11 +33,11 @@ class NottweetsController < ApplicationController
   end
 
   def create
-    @nottweet = Nottweet.new(nottweet_params)
-    @nottweet.user = current_user
-    @nottweet.content = strip_tags(@nottweet.content)
+    @bork = Bork.new(bork_params)
+    @bork.user = current_user
+    @bork.content = strip_tags(@bork.content)
 
-    if @nottweet.save
+    if @bork.save
       redirect_to root_url, notice: "Thanks for Borking!"
     else
       render "new"
@@ -46,17 +46,17 @@ class NottweetsController < ApplicationController
 
 
   def show
-    @nottweet = Nottweet.find(params[:id])
+    @bork = Bork.find(params[:id])
   end
 
   def destroy
-    Nottweet.find(params[:id]).destroy
+    Bork.find(params[:id]).destroy
     redirect_to :back
   end
 
   private
 
-  def nottweet_params
-    params.require(:nottweet).permit(:content, :attachment)
+  def bork_params
+    params.require(:bork).permit(:content, :attachment)
   end
 end

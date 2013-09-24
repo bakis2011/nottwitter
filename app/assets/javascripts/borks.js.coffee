@@ -1,13 +1,13 @@
 $ ->
   $(document).click (e) ->
     obj = e.target
-    form = $(obj).closest('#new_nottweet')
+    form = $(obj).closest('#new_bork')
     if form.length > 0
-      $('.nottweet-action').removeClass('hide')
-      $('#nottweet_content').addClass('focus')
+      $('.bork-action').removeClass('hide')
+      $('#bork_content').addClass('focus')
     else
-      $('.nottweet-action').addClass('hide')
-      $('#nottweet_content').removeClass('focus')
+      $('.bork-action').addClass('hide')
+      $('#bork_content').removeClass('focus')
 
   $('.show_attachment').click (e) ->
     e.preventDefault()

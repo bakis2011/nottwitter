@@ -9,11 +9,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @nottweets = Nottweet.where(user_id: @user.id).order('created_at DESC').page(params[:page]).per(50)
+    @borks = Bork.where(user_id: @user.id).order('created_at DESC').page(params[:page]).per(50)
   end
 
   def favorites
-    @nottweets = Favorite.where(user_id: params[:id]).map(&:nottweet).reject(&:blank?).order('created_at DESC')
+    @borks = Favorite.where(user_id: params[:id]).map(&:bork).reject(&:blank?).order('created_at DESC')
   end
 
   def edit

@@ -1,12 +1,12 @@
-class Api::NottweetsController < ApiController
+class Api::BorksController < ApiController
   def index
     if params[:limit].present?
       if params[:older_than].present?
         older_than = Time.parse(params[:older_than])
-        render json: Nottweet.all.limit(params[:limit]).where('created_at < ?', older_than).order('created_at DESC')
+        render json: Bork.all.limit(params[:limit]).where('created_at < ?', older_than).order('created_at DESC')
       elsif params[:since].present?
         since = Time.parse(params[:since])
-        render json: Nottweet.all.limit(params[:limit]).where('created_at > ?', since).order('created_at DESC')
+        render json: Bork.all.limit(params[:limit]).where('created_at > ?', since).order('created_at DESC')
       else
         render json: "No time parameter given"
       end
@@ -20,7 +20,7 @@ class Api::NottweetsController < ApiController
       if params[:content].length > 160
         render json: "Bork content too long"
       else
-        Nottweet.create(content: params[:content], user_id: User.find_by(username: params[:username]).id)
+        Bork.create(content: params[:content], user_id: User.find_by(username: params[:username]).id)
         render json: true
       end
     else

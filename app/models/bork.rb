@@ -1,4 +1,4 @@
-class Nottweet < ActiveRecord::Base
+class Bork < ActiveRecord::Base
   validates :content, :length => { :maximum => 160 }, :presence => true
 
   belongs_to :user

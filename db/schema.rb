@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923145908) do
+ActiveRecord::Schema.define(version: 20130924214935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,17 @@ ActiveRecord::Schema.define(version: 20130923145908) do
     t.datetime "updated_at"
   end
 
+  create_table "borks", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment"
+  end
+
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
-    t.integer  "nottweet_id"
+    t.integer  "bork_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,18 +42,10 @@ ActiveRecord::Schema.define(version: 20130923145908) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "read",        default: false
+    t.boolean  "read",       default: false
     t.integer  "author_id"
-    t.integer  "nottweet_id"
+    t.integer  "bork_id"
     t.string   "action"
-  end
-
-  create_table "nottweets", force: true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "attachment"
   end
 
   create_table "relationships", force: true do |t|

@@ -1,13 +1,13 @@
-Nottwitter::Application.routes.draw do
+Borker::Application.routes.draw do
 
 
-  root 'nottweets#index'
+  root 'borks#index'
 
   namespace :api do
     resources :users, only: [:index]
     post 'authenticate' => 'users#authenticate'
     post 'add_token' => 'users#add_token'
-    resources :nottweets, only: [:index, :create]
+    resources :borks, only: [:index, :create]
     resources :notifications, only: [:index]
   end
 
@@ -17,15 +17,15 @@ Nottwitter::Application.routes.draw do
 
   get 'signup' => 'users#new', as: 'signup'
   get 'users/:id/favorites' => 'users#favorites', as: 'favorites'
-  get 'nottweets/:id/favorite' => 'favorites#create', as: 'favorite'
-  get 'nottweets/:id/unfavorite' => 'favorites#destroy', as: 'unfavorite'
+  get 'borks/:id/favorite' => 'favorites#create', as: 'favorite'
+  get 'borks/:id/unfavorite' => 'favorites#destroy', as: 'unfavorite'
 
-  get 'jamesify' => 'nottweets#jamesify', as: 'jamesify_bork'
-  get 'borks_for_app.json' => 'nottweets#borks_for_app'
+  get 'jamesify' => 'borks#jamesify', as: 'jamesify_bork'
+  get 'borks_for_app.json' => 'borks#borks_for_app'
 
   resources :sessions
   resources :users
-  resources :nottweets
+  resources :borks
   resources :notifications
 
   # The priority is based upon order of creation: first created -> highest priority.

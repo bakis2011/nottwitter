@@ -52,7 +52,9 @@ gem 'jquery-ui-rails'
 gem 'rails_12factor', group: :production
 
 # for ios push notifications
-gem 'apns'
+gem 'houston'
+
+gem 'rename'
 
 group :doc do
   # bundle exec rake doc:rails generates the api under doc/api.

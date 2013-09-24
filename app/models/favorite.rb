@@ -1,3 +1,3 @@
 class Favorite < ActiveRecord::Base
-  belongs_to :nottweet
+  belongs_to :bork
 end
