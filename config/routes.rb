@@ -9,6 +9,8 @@ Borker::Application.routes.draw do
     get 'user_borks' => 'users#user_borks'
     resources :borks, only: [:index, :create]
     resources :notifications, only: [:index]
+    resources :favorites
+    get 'favorited' => 'favorites#favorited'
   end
 
   get 'sessions/new', as: 'login'
