@@ -8,13 +8,13 @@ class ApiController < ApplicationController
   end
 
   %w{password, token, bork_id, limit, content}.each do |param|
-    define_method "require_#{type}" do
-      render json: "No #{type} given" unless params[type.to_sym].present?
+    define_method "require_#{param}" do
+      render json: "No #{param} given" unless params[param.to_sym].present?
     end
   end
 
   def require_valid_username
-    render json: "Invalid username" unless params[:username].present? && User.find_by(params[:username]).present?
+    render json: "Invalid username" unless params[:username].present? && User.find_by(username: params[:username]).present?
   end
 
   def require_date
