@@ -6,4 +6,19 @@ class ApiController < ApplicationController
   def check_api_key
     render json: "invalid-api-key" unless params[:api_key] == API_KEY
   end
+
+  %w{password, token, bork_id, limit, content}.each do |param|
+    define_method "require_#{type}" do
+      render json: "No #{type} given" unless params[type.to_sym].present?
+    end
+  end
+
+  def require_valid_username
+    render json: "Invalid username" unless params[:username].present? && User.find_by(params[:username]).present?
+  end
+
+  def require_date
+    render json: "No time parameter given" unless params[:since].present? || params[:older_than].present?
+  end
+
 end

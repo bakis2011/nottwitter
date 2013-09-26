@@ -1,12 +1,12 @@
 Borker::Application.routes.draw do
 
-
   root 'borks#index'
 
   namespace :api do
     resources :users, only: [:index]
     post 'authenticate' => 'users#authenticate'
     post 'add_token' => 'users#add_token'
+    get 'user_borks' => 'users#user_borks'
     resources :borks, only: [:index, :create]
     resources :notifications, only: [:index]
   end
