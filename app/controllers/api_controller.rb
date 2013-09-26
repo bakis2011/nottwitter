@@ -7,7 +7,7 @@ class ApiController < ApplicationController
     render json: "invalid-api-key" unless params[:api_key] == API_KEY
   end
 
-  %w{password, token, bork_id, limit, content}.each do |param|
+  %w{password token bork_id limit content}.each do |param|
     define_method "require_#{param}" do
       render json: "No #{param} given" unless params[param.to_sym].present?
     end
