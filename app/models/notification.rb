@@ -15,7 +15,7 @@ class Notification < ActiveRecord::Base
 
   def push_notification
     Apns.where(user_id: user_id).each do |apns|
-      notification = Houston::Notification.new(apns.token)
+      notification = Houston::Notification.new(device: apns.token)
       notification.badge = 1
       if (action == "favorite")
         notification.alert("#{author.username} favorited your bork \"#{bork.content}\"")
