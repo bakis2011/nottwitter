@@ -31,6 +31,10 @@ class Api::UsersController < ApiController
     end
   end
 
+  def favorites
+    render json: User.find_by(username: params[:username]).favorites.map(&:id)
+  end
+
   def user_borks
     render json: Bork.where(user_id: User.find_by(username: params[:username])).limit(params[:limit])
   end

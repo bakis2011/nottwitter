@@ -7,6 +7,7 @@ Borker::Application.routes.draw do
     post 'authenticate' => 'users#authenticate'
     post 'add_token' => 'users#add_token'
     get 'user_borks' => 'users#user_borks'
+    get 'favorites' => 'users#favorites'
     resources :borks, only: [:index, :create]
     resources :notifications, only: [:index]
     resources :favorites
