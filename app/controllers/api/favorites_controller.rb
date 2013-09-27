@@ -11,12 +11,9 @@ class Api::FavoritesController < ApiController
   end
 
   def favorited
+    @bork = Bork.find(params[:bork_id])
     @user = User.find_by(username: params[:username])
-    if Favorite.find_by(user_id: @user.id, bork_id: params[:bork_id]).present?
-      render json: true
-    else
-      render json: false
-    end
+    render json: @user.favortited?(@bork)
   end
 
   def destroy
