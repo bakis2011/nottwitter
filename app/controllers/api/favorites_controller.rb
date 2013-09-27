@@ -16,7 +16,7 @@ class Api::FavoritesController < ApiController
     puts @user.favorited?(@bork)
     puts @bork
     puts @user
-    render json: @user.favorited?(@bork)
+    render json: false
   end
 
   def destroy
