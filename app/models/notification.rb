@@ -18,9 +18,9 @@ class Notification < ActiveRecord::Base
       notification = Houston::Notification.new(device: apns.token)
       notification.badge = 1
       if (action == "favorite")
-        notification.alert("#{author.username} favorited your bork \"#{bork.content}\"")
+        notification.alert = "#{author.username} favorited your bork \"#{bork.content}\""
       else
-        notification.alert("#{author.username} mentioned you in his bork \"#{bork.content}\"")
+        notification.alert = "#{author.username} mentioned you in his bork \"#{bork.content}\""
       end
       APN.push(notification)
     end
