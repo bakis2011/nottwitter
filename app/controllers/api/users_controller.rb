@@ -21,8 +21,13 @@ class Api::UsersController < ApiController
     @user = User.find_by(username: params[:username])
     if @token = Apns.find_by(token: params[:token])
       @token.user = @user
+      render json: true
     else
-      Apns.create(user_id: @user.id, token: params[:token])
+      if @apns = Apns.create(user_id: @user.id, token: params[:token])
+        render json: true
+      else
+        render json: @apns.errors
+      end
     end
   end
 
