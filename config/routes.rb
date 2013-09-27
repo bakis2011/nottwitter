@@ -10,7 +10,8 @@ Borker::Application.routes.draw do
     get 'favorites' => 'users#favorites'
     resources :borks, only: [:index, :create]
     resources :notifications, only: [:index]
-    resources :favorites
+    post 'favorites' => 'favorites#create'
+    delete 'favorites' => 'favorites#destroy'
     get 'favorited' => 'favorites#favorited'
   end
 
