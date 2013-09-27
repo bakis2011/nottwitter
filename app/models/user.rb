@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def favorited?(bork)
-    favorites.exists?(bork_id: bork.id)
+    favorites.exists?(bork_id: bork.id).present?
   end
 
   def favorite(bork)
