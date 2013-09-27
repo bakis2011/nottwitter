@@ -1,4 +1,2 @@
-# APNS.host = 'gateway.sandbox.push.apple.com'
-# APNS.pem = Rails.root.join('push_cert.pem').to_s
-# APNS.port = 2195
-# APNS.pass = 'Walkingonadream4'
+APN = Houston::Client.development
+APN.certificate = File.read(Rails.root.join('apple_push_notification.pem').to_s)
