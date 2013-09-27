@@ -13,6 +13,9 @@ class Api::FavoritesController < ApiController
   def favorited
     @bork = Bork.find(params[:bork_id])
     @user = User.find_by(username: params[:username])
+    puts @user.favorited?(@bork)
+    puts @bork
+    puts @user
     render json: @user.favortited?(@bork)
   end
 
