@@ -1,5 +1,5 @@
 class Api::BorksController < ApiController
-  before_filter :require_bork_id, only: [:delete]
+  before_filter :require_valid_bork_id, only: [:delete]
   before_filter :require_valid_username, only: [:create, :delete]
   before_filter :require_limit, only: [:index]
   before_filter :require_content, only: [:create]

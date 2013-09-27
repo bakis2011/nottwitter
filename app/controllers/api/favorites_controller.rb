@@ -1,5 +1,5 @@
 class Api::FavoritesController < ApiController
-  before_filter :require_bork_id
+  before_filter :require_valid_bork_id
   before_filter :require_valid_username
 
   def create
