@@ -32,7 +32,7 @@ class Api::UsersController < ApiController
   end
 
   def favorites
-    render json: User.find_by(username: params[:username]).favorites.map(&:id)
+    render json: User.find_by(username: params[:username]).favorites.map(&:bork_id)
   end
 
   def user_borks
