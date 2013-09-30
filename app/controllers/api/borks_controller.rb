@@ -22,7 +22,7 @@ class Api::BorksController < ApiController
     end
   end
 
-  def delete
+  def destroy
     @bork = Bork.find(params[:id])
     if owns_bork?
       @bork.destroy
