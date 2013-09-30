@@ -1,6 +1,6 @@
 class Api::BorksController < ApiController
-  before_filter :require_valid_bork_id, only: [:delete]
-  before_filter :require_valid_username, only: [:create, :delete]
+  before_filter :require_valid_bork_id, only: [:delete, :undo_delete]
+  before_filter :require_valid_username, only: [:create, :delete, :undo_delete]
   before_filter :require_limit, only: [:index]
   before_filter :require_content, only: [:create]
   before_filter :require_date, only: [:index]
@@ -24,15 +24,35 @@ class Api::BorksController < ApiController
 
   def delete
     @bork = Bork.find(params[:id])
-    @bork.destroy if @bork.username == params[:username]
+    if owns_bork?
+      @bork.destroy
+      render json: true
+    end
+  end
+
+  def undo_delete
+    @bork = Bork.with_deleted.find(params[:bork_id])
+    if owns_bork?
+      @bork.deleted_at = nil
+      render json: true
+    end
   end
 
   def too_long?
     if params[:content].length > 160
+      true
       render json: "Bork content too long"
+    else
+      false
+    end
+  end
+
+  def owns_bork?
+    if @bork.username == params[:username]
       true
     else
       false
+      render json: "That's not your bork!"
     end
   end
 end
