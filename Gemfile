@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # bundle edge rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0'
 
 # use postgresql as the database for active record
 gem 'pg'
@@ -53,6 +53,9 @@ gem 'rails_12factor', group: :production
 
 # for ios push notifications
 gem 'houston'
+
+# soft deletes for undo
+gem 'paranoia', '~> 2.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the api under doc/api.

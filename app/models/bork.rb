@@ -1,4 +1,5 @@
 class Bork < ActiveRecord::Base
+  acts_as_paranoid
   validates :content, :length => { :maximum => 160 }, :presence => true
 
   belongs_to :user
