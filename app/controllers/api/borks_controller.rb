@@ -1,6 +1,6 @@
 class Api::BorksController < ApiController
-  before_filter :require_valid_bork_id, only: [:delete, :undo_delete]
-  before_filter :require_valid_username, only: [:create, :delete, :undo_delete]
+  before_filter :require_valid_bork_id, only: [:destroy, :undo_delete]
+  before_filter :require_valid_username, only: [:create, :destroy, :undo_delete]
   before_filter :require_limit, only: [:index]
   before_filter :require_content, only: [:create]
   before_filter :require_date, only: [:index]
@@ -23,7 +23,7 @@ class Api::BorksController < ApiController
   end
 
   def destroy
-    @bork = Bork.find(params[:id])
+    @bork = Bork.find(params[:bork_id])
     if owns_bork?
       @bork.destroy
       render json: true
@@ -48,7 +48,7 @@ class Api::BorksController < ApiController
   end
 
   def owns_bork?
-    if @bork.username == params[:username]
+    if @bork.user.username == params[:username]
       true
     else
       false

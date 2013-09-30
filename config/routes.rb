@@ -8,7 +8,8 @@ Borker::Application.routes.draw do
     post 'add_token' => 'users#add_token'
     get 'user_borks' => 'users#user_borks'
     get 'favorites' => 'users#favorites'
-    resources :borks, only: [:index, :create, :destroy]
+    resources :borks, only: [:index, :create]
+    delete 'borks' => 'borks#destroy'
     post 'undo_delete' => 'borks#undo_delete'
     resources :notifications, only: [:index]
     post 'favorites' => 'favorites#create'
