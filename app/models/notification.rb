@@ -2,6 +2,7 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :bork
   belongs_to :author, class_name: "User"
+  before_create :create_api_content
   after_create :push_notification
 
   def mark_as_read
@@ -11,6 +12,14 @@ class Notification < ActiveRecord::Base
 
   def content
     bork ? bork.content : nil
+  end
+
+  def create_api_content
+    if self.action == "favorite"
+      self.notification_content = "#{author.username} favorited your bork: \"#{bork.content}\""
+    elsif self.action == "metnion"
+      self.notification_content = "#{author.username} mentioned you in this bork: \"#{bork.content}\""
+    end
   end
 
   def push_notification
