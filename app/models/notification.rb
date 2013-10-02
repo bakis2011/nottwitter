@@ -17,7 +17,7 @@ class Notification < ActiveRecord::Base
   def create_api_content
     if self.action == "favorite"
       self.notification_content = "#{author.username} favorited your bork: \"#{bork.content}\""
-    elsif self.action == "metnion"
+    elsif self.action == "mention"
       self.notification_content = "#{author.username} mentioned you in this bork: \"#{bork.content}\""
     end
   end
