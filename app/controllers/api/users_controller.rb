@@ -48,6 +48,6 @@ class Api::UsersController < ApiController
   end
 
   def user_id
-    render json: User.find_by(username: params[:username]).id
+    render json: { "user_id" => User.find_by(username: params[:username]).id }
   end
 end
