@@ -46,4 +46,8 @@ class Api::UsersController < ApiController
       render json: Bork.where(user_id: @user.id).limit(params[:limit]).where('created_at > ?', since).order('created_at DESC')
     end
   end
+
+  def user_id
+    render json: User.find_by(username: params[:username]).id
+  end
 end
