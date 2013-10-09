@@ -1,8 +1,9 @@
 .row.notifications
-  table
-    tbody
-      - if @notifications.present?
-        = render @notifications
-        = paginate @notifications
-      - else
-        | You currently have no notifications!
+  .small-12.columns.content-area
+    h4 Notifications
+    hr
+    - if @notifications.present?
+      = render @notifications
+      = paginate @notifications
+    - else
+      | You currently have no notifications!

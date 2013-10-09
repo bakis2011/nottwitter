@@ -1,4 +1,4 @@
-.row.notification class="#{'unread' unless notification.read}"
+.notification class="#{'unread' unless notification.read}"
   .small-10.columns
     .text= link_to (auto_link t notification.action, author: (link_to "@"+notification.author.username, user_path(notification.user_id)), bork: linkify_keywords(notification.bork)), bork_path(notification.bork_id)
   .small-2.columns

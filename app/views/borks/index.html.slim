@@ -1,5 +1,5 @@
 .row
-  .new-bork
+  .new-bork.content-area
     .user= link_to user_path(current_user.id) do
       .small-2.columns.avatar-preview
         = image_tag current_user.avatar.url(:thumb)
@@ -13,7 +13,7 @@
         p borks
     hr
     = render 'borks/form'
-  .bork-container
+  .bork-container.content-area
     h3 Borks
     hr
     .borks
