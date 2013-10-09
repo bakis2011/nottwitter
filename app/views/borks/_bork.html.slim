@@ -1,6 +1,6 @@
 .bork.row
   .small-2.columns.avi
-    .avatar= image_tag bork.user.avatar.url(:thumb), size: "60x60"
+    .avatar= image_tag bork.user.avatar.url(:thumb), size: "48x48"
   .small-8.columns.content
     .user= link_to "@"+bork.user.username, user_path(bork.user.id)
     .text class="#{'no-wrap' if bork.id == 998}"

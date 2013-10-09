@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
  *= require_tree .
  */
 @import bourbon/bourbon
@@ -19,3 +18,37 @@
 
   &:hover
     +transform(rotate(360deg))
+
+.nav
+  display: inline-block
+  +linear-gradient(#444, #222)
+  +size(100% 50px)
+  position: fixed
+  top: 0
+  z-index: 100
+
+  .row
+    height: 50px
+
+  h2.title
+    display: inline-block
+    padding: 0
+    margin: 0
+
+  a
+    text-decoration: none
+    color: darken(#d5d7d8, 20%)
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9)
+    +transition(all .2s ease-in)
+
+    &:hover
+      color: #d5d7d8
+
+  .right
+    display: inline-block
+    h6
+      color: white
+      margin: 13px 20px 0 0
+      bottom: 5px
+      display: inline-block
+

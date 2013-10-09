@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: nottwitter_development
+  database: borker_development
   pool: 5
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -44,11 +44,11 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: nottwitter_test
+  database: borker_test
   pool: 5
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: nottwitter_production
+  database: borker_production
   pool: 5

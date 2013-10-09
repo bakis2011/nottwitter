@@ -7,23 +7,17 @@ html lang="en"
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
   body
-    = javascript_include_tag "application"
-    .contain-to-grid.sticky
-      nav.top-bar
-        ul.left
-          li= link_to (image_tag("/assets/borker.png", width: "28", class: "logo")), root_url
-        ul.title-area
-          li.name
-            h1= link_to "Borker", root_url, class: "title"
-        section.top-bar-section
-          ul.right
-            li= link_to "Borkers", users_path
-            - if current_user
-              li= link_to "Notifications (#{current_user.notifications.where("notifications.read IS NULL OR notifications.read IS FALSE").count})", notifications_path
-              li= link_to current_user.username.capitalize, user_path(current_user.id)
-              li= link_to "Log Out", logout_path
-            - else
-              li= link_to "Log In", login_path
+    .nav
+      .row
+        h2.title= link_to "Borker", root_url
+        .right
+          h6= link_to "Borkers", users_path
+          - if current_user
+            h6= link_to "Notifications (#{current_user.notifications.where("notifications.read IS NULL OR notifications.read IS FALSE").count})", notifications_path
+            h6= link_to current_user.username.capitalize, user_path(current_user.id)
+            h6= link_to "Log Out", logout_path
+          - else
+            h6= link_to "Log In", login_path
 
     - if flash[:notice]
       .alert-box.radius data-alert=""
@@ -34,3 +28,4 @@ html lang="en"
         = flash[:alert]
         a.close href="#" &times;
     = yield
+    = javascript_include_tag "application"
