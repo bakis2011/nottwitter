@@ -1,14 +1,14 @@
 = form_for @bork do |f|
   .row
-    .large-12.small-12.columns
+    .small-12.columns
       .charactercount.right
       = f.text_area :content, placeholder: "Compose a new Bork..."
   .row.bork-action.hide
-    .large-6.small-6.columns
+    .small-8.columns
       = link_to "Jamesify", jamesify_bork_path, remote: true, method: :post, id: "jamesify"
       .attachment
         = f.file_field :attachment
-    .large-6.small-6.columns
+    .small-4.columns
       = f.submit "Bork", class: "button small right"
 
 javascript:

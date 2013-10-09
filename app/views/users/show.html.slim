@@ -1,15 +1,15 @@
 .row
-  .small-1.large-1.columns
+  .small-1.columns
     = link_to (image_tag @user.avatar.url(:profile), class: "profile_avatar"), @user.avatar.url
-  .small-1.large-1.columns.end
+  .small-11.columns.profile-username
     h1= @user.username
-    = link_to "Edit", edit_user_path(current_user.id) if current_user == @user
+    = link_to "Edit", edit_user_path(current_user.id), class: "small button radius secondary" if current_user == @user
 .row
-  h4 Borks
-  - if @borks.length > 0
-    table
-      tbody
-        = paginate @borks
-        = render @borks
-  - else
-    | This user has no Borks
+  .bork-container.content-area
+    h4 Borks
+    hr
+    - if @borks.length > 0
+      = render @borks
+      = paginate @borks
+    - else
+      | This user has no Borks

@@ -19,10 +19,6 @@ html lang="en"
           - else
             h6= link_to "Log In", login_path
 
-    - if flash[:notice]
-      .alert-box.radius data-alert=""
-        = flash[:notice]
-        a.close href="#" &times;
     - if flash[:alert]
       .alert-box.radius.alert data-alert=""
         = flash[:alert]

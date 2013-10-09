@@ -1306,6 +1306,7 @@ $default-float: left;
 .small-2.columns.when {
   width: 18%;
 }
+
 body {
   padding-top: 60px;
   background: #c0deed;
@@ -1327,14 +1328,15 @@ body {
   vertical-align: top;
 
 }
-.bork-container {
+.index-borks {
   width: 69%;
-
+}
+.bork-container {
   .bork.row {
     margin: 0;
   }
 
-  h3 {
+  h3, h4 {
     margin: 10px;
   }
 
