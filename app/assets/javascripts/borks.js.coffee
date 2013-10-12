@@ -18,3 +18,4 @@ $ ->
       $(this).text('Show Attachment')
     attachment.toggleClass('hide')
 
+  $("body").highlight("kate")
