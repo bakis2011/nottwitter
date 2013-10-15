@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    username = params[:username].downcase
-    user = User.find_by(username: username)
+    user = User.where('LOWER(username) = ?', params[:username].downcase).first
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_url, notice: "You are now logged in as #{user.username}"

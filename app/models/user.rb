@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
 
   has_many :apns, class_name: "Apns"
-  before_create :downcase_username
 
   mount_uploader :avatar, AvatarUploader
 
@@ -23,10 +22,6 @@ class User < ActiveRecord::Base
 
   def unfavorite(bork)
     favorites.find_by(bork_id: bork.id).destroy
-  end
-
-  def downcase_username
-    username.downcase!
   end
 
 end
