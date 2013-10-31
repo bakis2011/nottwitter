@@ -12,9 +12,9 @@ class Api::UsersController < ApiController
   def authenticate
     @user = User.find_by(username: params[:username])
     if (@user.authenticate(params[:password]))
-      render json: true
+      render json: { authenticated: true }
     else
-      render json: "Invalid Password"
+      render json: { error: "Invalid Password" }
     end
   end
 
@@ -22,10 +22,10 @@ class Api::UsersController < ApiController
     @user = User.find_by(username: params[:username])
     if @token = Apns.find_by(token: params[:token])
       @token.user = @user
-      render json: true
+      render json: { found_token: true }
     else
       if @apns = Apns.create(user_id: @user.id, token: params[:token])
-        render json: true
+        render json: { added_token: true }
       else
         render json: @apns.errors
       end
