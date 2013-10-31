@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    params[:username].downcase!
+    params[:user][:username].downcase!
     if params[:password][:changed] == "1"
       if @user.authenticate(params[:user][:old_password]) and @user.update_attributes(user_params)
         redirect_to user_path(@user.id), notice: "Password Updated"
