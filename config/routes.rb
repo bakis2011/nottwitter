@@ -16,6 +16,7 @@ Borker::Application.routes.draw do
     post 'favorites' => 'favorites#create'
     delete 'favorites' => 'favorites#destroy'
     get 'favorited' => 'favorites#favorited'
+    get 'bork_favorites' => 'borks#bork_favorites'
   end
 
   get 'sessions/new', as: 'login'

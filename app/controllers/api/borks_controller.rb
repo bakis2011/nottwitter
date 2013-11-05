@@ -55,4 +55,8 @@ class Api::BorksController < ApiController
       render json: "That's not your bork!"
     end
   end
+
+  def bork_favorites
+    render json: Favorite.where(bork_id: params[:bork_id])
+  end
 end
