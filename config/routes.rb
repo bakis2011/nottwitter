@@ -30,6 +30,7 @@ Borker::Application.routes.draw do
 
   get 'jamesify' => 'borks#jamesify', as: 'jamesify_bork'
   get 'borks_for_app.json' => 'borks#borks_for_app'
+  get 'random' => 'borks#random'
 
   resources :sessions
   resources :users
