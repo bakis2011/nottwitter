@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
 
 # bundle edge rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0'
+gem 'rails', '4.2.2'
 
 # use postgresql as the database for active record
 gem 'pg'
@@ -14,13 +13,13 @@ gem 'slim-rails'
 gem 'activerecord-session_store'
 
 # use scss for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails'
 
 # use uglifier as compressor for javascript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # use coffeescript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # zurb stuff for responsive framework
 gem 'compass-rails'
@@ -30,7 +29,7 @@ gem 'zurb-foundation'
 gem 'therubyracer', platforms: :ruby
 
 # time ago for tweet dates
-gem 'rails-timeago', '~> 2.0'
+gem 'rails-timeago'
 
 # link helpers
 gem 'rails_autolink'
@@ -55,7 +54,7 @@ gem 'rails_12factor', group: :production
 gem 'houston'
 
 # soft deletes for undo
-gem 'paranoia', '~> 2.0'
+gem 'paranoia'
 
 group :doc do
   # bundle exec rake doc:rails generates the api under doc/api.
@@ -64,11 +63,10 @@ end
 
 group :development do
   gem 'pry-rails'
-  gem 'pry-plus'
+  gem 'pry'
+  gem 'zeus'
 end
 
 # use activemodel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby'
 
-# zeus for faster dev server
-gem 'zeus'
