@@ -5,7 +5,7 @@ ruby "2.5.0"
 gem 'rails', '~>4.2.10'
 
 # use postgresql as the database for active record
-gem 'pg'
+gem 'pg', '~> 0.18'
 
 # slim
 gem 'slim-rails'
