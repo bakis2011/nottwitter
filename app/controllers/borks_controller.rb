@@ -1,6 +1,5 @@
 class BorksController < ApplicationController
   include ActionView::Helpers::TextHelper
-  skip_before_filter :authorize, only: [:borks_for_app, :random]
 
   def index
     @borks = Bork.all.order('created_at DESC').page(params[:page]).per(50)
