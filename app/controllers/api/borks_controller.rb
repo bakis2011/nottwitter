@@ -18,7 +18,9 @@ class Api::BorksController < ApiController
   def create
     unless too_long?
       Bork.create(content: params[:content], user_id: User.find_by(username: params[:username]).id)
-      render json: true
+      head :ok
+    else
+      render json: "Bork content too long", status: 422
     end
   end
 
@@ -26,7 +28,9 @@ class Api::BorksController < ApiController
     @bork = Bork.find(params[:bork_id])
     if owns_bork?
       @bork.destroy
-      render json: true
+      head :ok
+    else
+      render json: "That's not your bork!", status: 422
     end
   end
 
@@ -34,26 +38,18 @@ class Api::BorksController < ApiController
     @bork = Bork.with_deleted.find(params[:bork_id])
     if owns_bork?
       @bork.deleted_at = nil
-      render json: true
+      head :ok
+    else
+      render json: "That's not your bork!", status: 422
     end
   end
 
   def too_long?
-    if params[:content].length > 160
-      true
-      render json: "Bork content too long"
-    else
-      false
-    end
+    params[:content].length > 160
   end
 
   def owns_bork?
-    if @bork.user.username == params[:username]
-      true
-    else
-      false
-      render json: "That's not your bork!"
-    end
+    @bork.user.username == params[:username]
   end
 
   def bork_favorites

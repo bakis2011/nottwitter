@@ -33,4 +33,6 @@ Borker::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  API_KEY = 'abcd1234'
 end
